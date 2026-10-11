@@ -83,6 +83,10 @@
   .hecho h2 { font: 400 34px/1.05 var(--anton); text-transform: uppercase; }
   .hecho p { margin-top: 10px; }
   .hecho .boton { margin-top: 16px; }
+  .aviso { display: flex; gap: 14px; align-items: center; margin-top: 18px; padding: 14px 16px; background: var(--k); color: var(--w); font-size: 20px; line-height: 1.25; }
+  .aviso .senal { flex: none; width: 44px; height: 44px; background: var(--y); color: var(--k); display: flex; align-items: center; justify-content: center; font: 400 34px/1 var(--anton); transform: rotate(4deg); }
+  .aviso p { margin: 0; }
+  .aviso b { color: var(--y); }
 
   section { padding-block: 30px; }
   .titulo { font-size: clamp(34px, 9.5vw, 52px); margin-bottom: 18px; }
@@ -220,10 +224,26 @@
       return el;
     };
     poner('h2', 'Ya la tienes');
-    poner('p', enviada
-      ? 'Ábrela ahora. También te la he mandado al correo: si está en Promociones o en spam, arrástrala a Principal para no perderte los avisos.'
-      : 'Ábrela ahora. Te he apuntado para avisarte de lo que cambie.');
+    poner('p', 'Ábrela cuando quieras.');
     poner('a', 'Abrir la guía', 'boton').href = '/29n';
+    // The email matters as much as the guide: it is how the next notices arrive, and it rarely lands in the main inbox on its own.
+    if (enviada) {
+      const aviso = poner('div', '', 'aviso');
+      const senal = document.createElement('span');
+      senal.className = 'senal';
+      senal.textContent = '!';
+      senal.setAttribute('aria-hidden', 'true');
+      const texto = document.createElement('p');
+      const fuerte = document.createElement('b');
+      fuerte.textContent = 'Mira tu correo. ';
+      texto.append(fuerte, 'También te la he mandado ahí. Si no la ves, búscala en ');
+      const donde = document.createElement('b');
+      donde.textContent = 'Promociones o Spam';
+      texto.append(donde, ' y arrástrala a Principal, o no te llegarán los avisos.');
+      aviso.append(senal, texto);
+    } else {
+      poner('p', 'Te he apuntado para avisarte de lo que cambie.');
+    }
     hecho.hidden = false;
   }
 
