@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Guía de ¿Qué Cambia? para votar el 29 de noviembre: fechas, voto por correo, mesa electoral y qué pasa con tu voto.">
+<link rel="icon" type="image/png" href="/assets/que-cambia-icono.png">
+<link rel="apple-touch-icon" href="/assets/que-cambia-icono.png">
+<meta name="theme-color" content="#FFD400">
+<meta name="robots" content="noindex">
+<title>Guía para votar el 29-N · ¿Qué Cambia?</title>
+<!-- Same cookieless analytics as the rest of the site; data-domains keeps previews out of the numbers. -->
+<script defer src="https://cloud.umami.is/script.js" data-website-id="1facdecd-7f13-4a94-9b76-18a5593acb29" data-domains="fullbleedstudio.com,www.fullbleedstudio.com,guia.fullbleedstudio.com"></script>
+<style>
+  /* The channel's own look, not the studio's: yellow ground, ink, white cards
+     with a hard shadow, Anton titles. Self-contained like /que.cambia. */
+  @font-face { font-family: 'Anton'; font-weight: 400; font-display: swap; src: url('/assets/fonts/anton-400.woff2') format('woff2'); }
+  @font-face { font-family: 'Barlow Condensed'; font-weight: 600; font-display: swap; src: url('/assets/fonts/barlowcondensed-600.woff2') format('woff2'); }
+  @font-face { font-family: 'Barlow Condensed'; font-weight: 700; font-display: swap; src: url('/assets/fonts/barlowcondensed-700.woff2') format('woff2'); }
+  @font-face { font-family: 'DM Mono'; font-weight: 500; font-display: swap; src: url('/assets/fonts/dmmono-500.woff2') format('woff2'); }
+  :root {
+    --y: #FFD400;
+    --y2: #F6C800; /* one step darker than the ground, for texture only */
+    --k: #111111;
+    --w: #FFFFFF;
+    --anton: 'Anton', Impact, 'Arial Narrow', sans-serif;
+    --texto: 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif;
+    --mono: 'DM Mono', ui-monospace, Menlo, monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; color: var(--k); background: var(--y);
+    background-image: radial-gradient(var(--y2) 2.5px, transparent 3px); background-size: 27px 27px;
+    font: 600 21px/1.28 var(--texto); letter-spacing: 0.005em;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  p, ul, ol, h1, h2, h3, dl, dd, figure { margin: 0; padding: 0; }
+  ul, ol { list-style: none; }
+  a { color: inherit; }
+  b, strong { font-weight: 700; }
+  .ancho { width: 100%; max-width: 720px; margin-inline: auto; padding-inline: 18px; }
+  .anton { font-family: var(--anton); font-weight: 400; text-transform: uppercase; line-height: 1.04; letter-spacing: 0.005em; }
+  .mono { font: 500 13px/1.3 var(--mono); letter-spacing: 0; }
+  /* The caption highlight from the videos: the word that matters, ink on yellow reversed. */
+  .hl { background: var(--k); color: var(--y); padding: 0 0.22em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  h1 .hl { display: inline-block; white-space: nowrap; line-height: 1; padding: 0.06em 0.14em 0.02em; margin-top: 0.08em; }
+  .card { background: var(--w); border: 4px solid var(--k); box-shadow: 6px 7px 0 var(--k); }
+
+  /* The videos' progress strip, here as the index: one cell per block, the current one inked. */
+  .tira { position: sticky; top: 0; z-index: 5; background: var(--y); border-bottom: 3px solid var(--k); }
+  .tira ol { display: flex; gap: 5px; padding-block: 9px; }
+  .tira a {
+    flex: 1; display: flex; align-items: center; justify-content: center; height: 38px;
+    border: 2.5px solid var(--k); background: transparent; text-decoration: none; font: 500 15px/1 var(--mono);
+  }
+  .tira li { flex: 1; display: flex; }
+  .tira a[aria-current="true"] { background: var(--k); color: var(--y); }
+  .tira a:focus-visible, .boton:focus-visible { outline: 3px solid var(--w); outline-offset: 2px; }
+
+  .meta { display: flex; justify-content: space-between; gap: 12px; padding-top: 14px; }
+  .meta span:first-child::before { content: "■ "; }
+
+  .marca { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 16px; }
+  .marca img { display: block; width: 74px; height: auto; }
+  .marca p { text-align: right; }
+  .firma { display: block; width: 92px; height: auto; margin-bottom: 14px; }
+
+  .portada { padding-block: 26px 44px; }
+  .portada .fecha { display: inline-flex; flex-direction: column; align-items: stretch; width: 108px; margin-top: 22px; transform: rotate(-3deg); text-align: center; }
+  .portada .fecha b { background: var(--k); color: var(--y); font: 400 17px/1 var(--anton); letter-spacing: 0.04em; padding: 7px 0 6px; text-transform: uppercase; }
+  .portada .fecha span { font: 400 58px/1 var(--anton); padding: 6px 0 8px; }
+  .portada h1 { font-size: clamp(54px, 15.5vw, 104px); margin-top: 20px; }
+  .portada .sub { font-size: 25px; line-height: 1.2; margin-top: 18px; max-width: 24ch; }
+  .portada .fila { margin-top: 4px; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; padding-right: 8px; }
+  .quique { flex: none; width: 96px; height: auto; margin-bottom: -4px; }
+  .dentro { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
+  .dentro li { background: var(--w); border: 3px solid var(--k); padding: 3px 10px 4px; font-weight: 700; font-size: 19px; }
+
+  section { padding-block: 34px; scroll-margin-top: 56px; }
+  .bloque { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+  .bloque .n { flex: none; width: 58px; height: 58px; background: var(--k); color: var(--y); display: flex; align-items: center; justify-content: center; font: 400 44px/1 var(--anton); transform: rotate(-3deg); }
+  .bloque h2 { font-size: clamp(38px, 10.5vw, 58px); }
+  .entra { font-size: 23px; line-height: 1.22; margin-bottom: 18px; max-width: 30ch; }
+
+  /* Dates: the day in an ink band, what to do next to it. */
+  .fechas { display: grid; gap: 14px; }
+  .fechas li { display: grid; grid-template-columns: 112px 1fr; }
+  .fechas .dia { background: var(--k); color: var(--y); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 10px 6px; }
+  .fechas .dia small { font: 500 11px/1.2 var(--mono); text-transform: uppercase; }
+  .fechas .dia b { font: 400 29px/1.02 var(--anton); text-transform: uppercase; }
+  .fechas .que { padding: 12px 14px 13px; }
+  .fechas h3, .pasos h3, .tres h3 { font: 400 24px/1.08 var(--anton); text-transform: uppercase; margin-bottom: 5px; }
+  .fechas li.hoy .dia { background: var(--y); color: var(--k); border-right: 4px solid var(--k); }
+
+  .ojo { display: flex; gap: 14px; align-items: center; margin-top: 20px; padding: 14px 16px; background: var(--k); color: var(--w); }
+  .ojo .senal { flex: none; width: 46px; height: 46px; background: var(--y); color: var(--k); display: flex; align-items: center; justify-content: center; font: 400 36px/1 var(--anton); transform: rotate(4deg); }
+  .ojo b { color: var(--y); }
+  .apunte { margin-top: 16px; padding: 12px 14px 13px; border: 3px dashed var(--k); font-size: 19px; }
+  .apunte b { text-transform: uppercase; font-size: 17px; letter-spacing: 0.03em; }
+
+  .pasos { display: grid; gap: 14px; counter-reset: paso; }
+  .pasos li { counter-increment: paso; display: grid; grid-template-columns: 54px 1fr; align-items: stretch; }
+  .pasos li::before { content: counter(paso); display: flex; align-items: center; justify-content: center; border-right: 4px solid var(--k); background: var(--y); font: 400 38px/1 var(--anton); }
+  .pasos div { padding: 12px 14px 13px; }
+  .plazo { display: inline-block; margin-top: 8px; background: var(--k); color: var(--y); padding: 2px 9px 3px; font-weight: 700; font-size: 18px; text-transform: uppercase; letter-spacing: 0.02em; }
+
+  .lista { display: grid; gap: 0; }
+  .lista li { display: grid; grid-template-columns: 34px 1fr; gap: 10px; align-items: start; padding: 12px 14px; border-top: 3px solid var(--k); }
+  .lista li:first-child { border-top: 0; }
+  .lista li::before { content: ""; width: 26px; height: 26px; margin-top: 1px; border: 3px solid var(--k); background: var(--y) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M4 10.5l4 4 8-9' fill='none' stroke='%23111' stroke-width='3'/%3E%3C/svg%3E") center/18px no-repeat; }
+  .lista b { text-transform: uppercase; }
+
+  .cifra { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; padding: 14px 16px; margin-top: 14px; }
+  .cifra p { flex: 1 1 180px; }
+  .cifra b { font: 400 56px/0.95 var(--anton); white-space: nowrap; }
+
+  .tres { display: grid; gap: 14px; }
+  .tres li { padding: 14px 16px 15px; }
+  .tres .si, .tres .no { display: grid; grid-template-columns: 22px 1fr; gap: 8px; margin-top: 6px; font-size: 20px; }
+  .tres .si::before { content: "✓"; font-weight: 700; }
+  .tres .no::before { content: "✕"; font-weight: 700; }
+  .tres .es { font-size: 20px; }
+  .tres .plazo { margin-top: 12px; }
+  .pasos.sin li { grid-template-columns: 1fr; }
+  .pasos.sin li::before { content: none; }
+  .apunte a { font-weight: 700; }
+
+  .pesa { padding: 16px; margin-top: 16px; }
+  .pesa h3 { font: 400 23px/1.1 var(--anton); text-transform: uppercase; margin-bottom: 14px; }
+  .barra { display: grid; grid-template-columns: 76px 1fr; gap: 10px; align-items: center; margin-top: 10px; }
+  .barra span { font-weight: 700; text-transform: uppercase; }
+  .barra div { display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .barra i { flex: none; height: 38px; background: var(--k); }
+  .barra em { font: 400 24px/1 var(--anton); font-style: normal; }
+  .pesa p { margin-top: 14px; font-size: 19px; }
+
+  .bulos { display: grid; gap: 18px; }
+  .bulos li { position: relative; padding: 16px 16px 15px; }
+  .bulos q { display: block; font-size: 23px; line-height: 1.18; font-weight: 700; quotes: "«" "»"; }
+  .bulos p { margin-top: 10px; font-size: 20px; }
+  .sello { float: right; margin: -4px -4px 6px 12px; border: 4px solid var(--k); padding: 3px 9px 2px; font: 400 23px/1 var(--anton); text-transform: uppercase; transform: rotate(7deg); background: var(--y); }
+
+  .cierre { padding-block: 40px 30px; }
+  .cierre .card { padding: 20px 18px 22px; }
+  .cierre h2 { font-size: clamp(34px, 9.5vw, 50px); }
+  .cierre p { margin-top: 10px; font-size: 22px; }
+  .botones { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+  .boton { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 20px; background: var(--k); color: var(--y); border: 4px solid var(--k); font: 400 22px/1 var(--anton); text-transform: uppercase; letter-spacing: 0.02em; text-decoration: none; cursor: pointer; }
+  .boton.claro { background: var(--w); color: var(--k); }
+  .fuentes { margin-top: 26px; font: 500 12.5px/1.5 var(--mono); }
+  .fuentes p + p { margin-top: 8px; }
+
+  @media (max-width: 380px) {
+    .fechas li, .fecha { grid-template-columns: 90px 1fr; }
+    .fechas .dia b, .fecha .dia b { font-size: 24px; }
+    .fechas .que, .fecha .que { padding-inline: 12px; }
+  }
+  @media (min-width: 640px) {
+    body { font-size: 22px; }
+    .quique { width: 170px; }
+    .tres { grid-template-columns: repeat(3, 1fr); }
+    .tres.dos { grid-template-columns: repeat(2, 1fr); }
+    .fechas li { grid-template-columns: 136px 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  @media print {
+    .tira, .botones { display: none; }
+    section { padding-block: 18px; break-inside: avoid; }
+    .card, .fechas li, .pasos li, .bulos li, .tres li { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="tira" aria-label="Índice de la guía">
+  <ol class="ancho">
+    <li><a href="#inicio" aria-label="Inicio">?</a></li>
+    <li><a href="#fechas" aria-label="1, las fechas">1</a></li>
+    <li><a href="#correo" aria-label="2, voto por correo">2</a></li>
+    <li><a href="#fuera" aria-label="3, si vives fuera de España">3</a></li>
+    <li><a href="#mesa" aria-label="4, la mesa electoral">4</a></li>
+    <li><a href="#dia" aria-label="5, el día 29">5</a></li>
+    <li><a href="#blanco" aria-label="6, en blanco, nulo o no ir">6</a></li>
+    <li><a href="#cuenta" aria-label="7, cómo se cuenta">7</a></li>
+    <li><a href="#bulos" aria-label="8, verdadero o falso">8</a></li>
+  </ol>
+</nav>
+
+<header class="portada ancho" id="inicio">
+  <div class="marca"><img src="/assets/que-cambia-logo.png" alt="¿Qué Cambia?" width="484" height="440"><p class="mono">@que.cambia<br>Datos a 11 de octubre de 2026</p></div>
+  <div class="fila">
+    <div class="fecha card" aria-hidden="true"><b>Noviembre</b><span>29</span></div>
+    <svg class="quique" viewBox="40 -20 470 625" aria-hidden="true"><g transform="rotate(-4 250 560)"><g transform="translate(0 0)"><path d="M150,170 C150,60 350,60 350,170 C350,255 250,245 250,345" fill="none" stroke="#111111" stroke-width="100" stroke-linejoin="round"/><circle cx="206" cy="95" r="24" fill="#FFFFFF"/><circle cx="211" cy="91" r="10.1" fill="#111111"/><circle cx="294" cy="95" r="24" fill="#FFFFFF"/><circle cx="299" cy="91" r="10.1" fill="#111111"/><line x1="184" y1="7" x2="228" y2="21" stroke="#111111" stroke-width="11" stroke-linecap="round"/><line x1="272" y1="21" x2="316" y2="7" stroke="#111111" stroke-width="11" stroke-linecap="round"/><path d="M215,300 Q145.0,340.5 95,345" fill="none" stroke="#111111" stroke-width="15" stroke-linecap="round"/><path d="M285,300 Q387.5,285.5 470,235" fill="none" stroke="#111111" stroke-width="15" stroke-linecap="round"/><circle cx="95" cy="345" r="15" fill="#111111"/><circle cx="470" cy="235" r="15" fill="#111111"/></g><circle cx="250" cy="455" r="52" fill="#111111"/><path d="M232,498 L222,572 M268,498 L278,572" stroke="#111111" stroke-width="15" stroke-linecap="round"/><ellipse cx="208" cy="578" rx="30" ry="13" fill="#111111"/><ellipse cx="292" cy="578" rx="30" ry="13" fill="#111111"/></g></svg>
+  </div>
+  <h1 class="anton">Guía para votar <span class="hl">sin liarte</span></h1>
+  <p class="sub">Elecciones generales del 29 de noviembre. Lo que tienes que saber, en dos minutos y sin bandos.</p>
+  <ul class="dentro" aria-label="Qué hay dentro">
+    <li>Fechas</li><li>Voto por correo</li><li>Desde el extranjero</li><li>Mesa electoral</li><li>El día 29</li><li>Blanco, nulo o no ir</li><li>Cómo se cuenta</li><li>Bulos</li>
+  </ul>
+</header>
+
+<main>
+
+<section id="fechas" class="ancho">
+  <div class="bloque"><span class="n" aria-hidden="true">1</span><h2 class="anton">Las fechas</h2></div>
+  <p class="entra">Siete fechas. Si se te pasa una, puedes quedarte <span class="hl">sin votar</span>.</p>
+  <ol class="fechas">
+    <li class="card"><div class="dia"><small>Octubre</small><b>12 al 19</b></div><div class="que"><h3>Mira el censo</h3><p>Comprueba dónde votas y pide que lo corrijan si está mal. En la web del INE o en tu ayuntamiento. Si te has mudado, es tu semana.</p></div></li>
+    <li class="card"><div class="dia"><small>Oct. · Nov.</small><b>31 al 4</b></div><div class="que"><h3>Sorteo de las mesas</h3><p>Si te toca, te llega una carta a casa.</p></div></li>
+    <li class="card"><div class="dia"><small>Noviembre</small><b>13 al 27</b></div><div class="que"><h3>Campaña</h3><p>Dos semanas de mítines, carteles y debates.</p></div></li>
+    <li class="card"><div class="dia"><small>Hasta el</small><b>19 nov.</b></div><div class="que"><h3>Pedir el voto por correo</h3><p>Último día. Después ya no se puede.</p></div></li>
+    <li class="card"><div class="dia"><small>Hasta el</small><b>25 nov.</b></div><div class="que"><h3>Entregar el voto por correo</h3><p>Último día para llevar tu sobre a Correos.</p></div></li>
+    <li class="card"><div class="dia"><small>Noviembre</small><b>28</b></div><div class="que"><h3>Jornada de reflexión</h3><p>Nadie puede pedirte el voto.</p></div></li>
+    <li class="card hoy"><div class="dia"><small>Noviembre</small><b>29</b></div><div class="que"><h3>A votar</h3><p>De 9 de la mañana a 8 de la tarde.</p></div></li>
+  </ol>
+  <p class="apunte"><b>¿Vives fuera de España?</b> Tus fechas son otras. Están en el <a href="#fuera">apartado 3</a>.</p>
+</section>
+
+<section id="correo" class="ancho">
+  <div class="bloque"><span class="n" aria-hidden="true">2</span><h2 class="anton">Voto por correo</h2></div>
+  <p class="entra">Si el 29 no vas a estar, son <span class="hl">tres pasos</span>.</p>
+  <ol class="pasos">
+    <li class="card"><div><h3>Pídelo</h3><p>En cualquier oficina de Correos, con tu DNI, pasaporte o carné de conducir. También por internet, con certificado digital.</p><span class="plazo">Hasta el 19 de noviembre</span></div></li>
+    <li class="card"><div><h3>Recíbelo</h3><p>Te llegan las papeletas a casa por correo certificado. Te identificas y firmas.</p><span class="plazo">Del 9 al 22 de noviembre</span></div></li>
+    <li class="card"><div><h3>Entrégalo</h3><p>Eliges papeleta, cierras el sobre y lo llevas a Correos. Tienes que enseñar el DNI.</p><span class="plazo">Hasta el 25 de noviembre</span></div></li>
+  </ol>
+  <div class="ojo"><span class="senal" aria-hidden="true">!</span><p><b>Y ojo:</b> si pides el voto por correo, el 29 ya no puedes votar en persona.</p></div>
+  <p class="apunte"><b>¿Lo entrega otra persona por ti?</b> Tiene que llevar una autorización firmada por ti y una fotocopia de tu DNI.</p>
+</section>
+
+<section id="fuera" class="ancho">
+  <div class="bloque"><span class="n" aria-hidden="true">3</span><h2 class="anton">Si vives fuera</h2></div>
+  <p class="entra">Desde el extranjero también se vota. Cambia si <span class="hl">vives allí</span> o estás de paso.</p>
+  <ul class="tres dos">
+    <li class="card"><h3>Vives fuera</h3><p class="es">Y estás inscrito en tu consulado.</p><p class="si">No tienes que pedir nada: te mandan la documentación a casa, por correo certificado.</p><p class="si">Las papeletas también se descargan de la web oficial que viene en la hoja.</p></li>
+    <li class="card"><h3>Estás de paso</h3><p class="es">Unos meses fuera, por trabajo o estudios.</p><p class="no">No te llega nada solo: tienes que pedir el voto en el consulado.</p><span class="plazo">Hasta el 31 de octubre</span></li>
+  </ul>
+  <p class="entra" style="margin-top: 22px">Si vives fuera, eliges <span class="hl">cómo votar</span>.</p>
+  <ol class="pasos sin">
+    <li class="card"><div><h3>En el consulado</h3><p>Llevas el sobre en persona y lo metes en la urna. Te identificas con pasaporte o DNI.</p><span class="plazo">Del 21 al 26 de noviembre</span></div></li>
+    <li class="card"><div><h3>Por correo</h3><p>Envías el sobre a tu consulado, certificado si puedes. Tiene que llegar el 27 como tarde.</p><span class="plazo">Hasta el 24 de noviembre</span></div></li>
+  </ol>
+  <div class="ojo"><span class="senal" aria-hidden="true">!</span><p><b>Y ojo:</b> estos plazos no se amplían. Si dudas, llama a tu consulado.</p></div>
+</section>
+
+<section id="mesa" class="ancho">
+  <div class="bloque"><span class="n" aria-hidden="true">4</span><h2 class="anton">Si te toca mesa</h2></div>
+  <p class="entra">Es un sorteo, y <span class="hl">es obligatorio</span>.</p>
+  <ul class="lista card">
+    <li><p><b>Te avisan por carta.</b> El sorteo es del 31 de octubre al 4 de noviembre.</p></li>
+    <li><p><b>¿No puedes ir?</b> Tienes 7 días desde que te llega la carta para explicarlo ante la Junta Electoral de tu zona. Ella decide.</p></li>
+    <li><p><b>Titular o suplente.</b> Los suplentes también tienen que presentarse por si falta alguien.</p></li>
+  </ul>
+  <div class="cifra card"><b>75 €</b><p>es lo que cobras si te quedas en la mesa. Los suplentes solo cobran si acaban sentándose.</p></div>
+</section>
+
+<section id="dia" class="ancho">
+  <div class="bloque"><span class="n" aria-hidden="true">5</span><h2 class="anton">El día 29</h2></div>
+  <p class="entra">Lo que tienes que llevar y <span class="hl">lo que no vale</span>.</p>
+  <ul class="lista card">
+    <li><p><b>Horario.</b> De 9:00 a 20:00.</p></li>
+    <li><p><b>Un documento con tu foto.</b> DNI, pasaporte o carné de conducir.</p></li>
+    <li><p><b>Tu mesa.</b> Viene en la tarjeta del censo que llega a casa. También se consulta en la web del INE.</p></li>
+    <li><p><b>Dos sobres.</b> Uno blanco para el Congreso y uno sepia para el Senado.</p></li>
+    <li><p><b>La papeleta.</b> Las hay en el colegio. También vale la que te llega a casa.</p></li>
+  </ul>
+</section>
+
+<section id="blanco" class="ancho">
+  <div class="bloque"><span class="n" aria-hidden="true">6</span><h2 class="anton">Si no te convence nadie</h2></div>
+  <p class="entra">En blanco, nulo o no ir. <span class="hl">No es lo mismo.</span></p>
+  <ul class="tres">
+    <li class="card"><h3>En blanco</h3><p class="es">El sobre vacío, sin papeleta.</p><p class="si">Es un voto válido y sale en los resultados con su propia cifra.</p><p class="no">No va a ningún partido y no deja ninguna silla vacía.</p></li>
+    <li class="card"><h3>Nulo</h3><p class="es">Una papeleta tachada o dos de partidos distintos.</p><p class="si">Cuentas como votante.</p><p class="no">No es un voto válido: no entra en el reparto.</p></li>
+    <li class="card"><h3>No ir</h3><p class="es">No votas.</p><p class="si">Votar es un derecho, no una obligación.</p><p class="no">Solo baja la participación. Las elecciones valen igual.</p></li>
+  </ul>
+  <p class="apunte"><b>El único efecto del voto en blanco.</b> Un partido necesita 3 de cada 100 votos válidos de su provincia para tener diputados. El blanco es válido, así que sube un poco ese listón. Solo se nota en provincias grandes.</p>
+  <div class="cifra card"><b>200.673</b><p>personas votaron en blanco en 2023. Menos de 1 de cada 100 votos.</p></div>
+</section>
+
+<section id="cuenta" class="ancho">
+  <div class="bloque"><span class="n" aria-hidden="true">7</span><h2 class="anton">Cómo se cuenta</h2></div>
+  <p class="entra">No se cuentan todos los votos juntos. Se cuenta <span class="hl">provincia a provincia</span>.</p>
+  <ul class="lista card">
+    <li><p><b>350 diputados.</b> Cada provincia elige a los suyos.</p></li>
+    <li><p><b>Dos asegurados.</b> Toda provincia tiene dos diputados de entrada. El resto se reparte según la población.</p></li>
+    <li><p><b>El listón del 3 %.</b> Un partido que no llega a 3 de cada 100 votos válidos en una provincia se queda fuera del reparto allí.</p></li>
+  </ul>
+  <figure class="pesa card">
+    <h3>Votantes para elegir a un diputado</h3>
+    <div class="barra"><span>Teruel</span><div><i style="width: 14.5%"></i><em>35.000</em></div></div>
+    <div class="barra"><span>Madrid</span><div><i style="width: 60%"></i><em>145.000</em></div></div>
+    <p>Por eso un voto en Teruel pesa como cuatro de Madrid. Está en la Constitución y en la ley electoral, y solo el Congreso puede cambiarlo.</p>
+  </figure>
+</section>
+
+<section id="bulos" class="ancho">
+  <div class="bloque"><span class="n" aria-hidden="true">8</span><h2 class="anton">¿Verdad o bulo?</h2></div>
+  <p class="entra">Cuatro cosas que <span class="hl">se repiten mucho</span> y no son verdad.</p>
+  <ul class="bulos">
+    <li class="card"><span class="sello">Falso</span><q>El voto en blanco se lo queda el partido que gana.</q><p>No va a ningún partido. Tampoco al más votado.</p></li>
+    <li class="card"><span class="sello">Falso</span><q>Si vota poca gente, las elecciones se anulan.</q><p>No hay mínimo de participación. En 2023 no votaron 12,5 millones de personas y el Congreso se llenó igual.</p></li>
+    <li class="card"><span class="sello">Falso</span><q>Si pido el voto por correo, puedo cambiar de idea e ir el 29.</q><p>Una vez pedido, ya no puedes votar en persona.</p></li>
+    <li class="card"><span class="sello">Falso</span><q>El voto en blanco deja escaños vacíos.</q><p>Los 350 diputados se reparten igual, entre los partidos.</p></li>
+  </ul>
+</section>
+
+<section class="cierre ancho">
+  <div class="card">
+    <h2 class="anton">¿Y qué propone cada partido?</h2>
+    <p>Eso no está aquí. Lo contamos uno por uno, con el mismo molde para todos, en <b>@que.cambia</b>.</p>
+    <div class="botones">
+      <a class="boton" href="https://www.instagram.com/que.cambia/" target="_blank" rel="noopener" data-ev="ig">Ver los vídeos</a>
+      <button class="boton claro" type="button" id="guardar">Guardar en PDF</button>
+    </div>
+  </div>
+  <div class="fuentes">
+    <img class="firma" src="/assets/que-cambia-logo.png" alt="¿Qué Cambia?" width="484" height="440" loading="lazy">
+    <p>Fuentes: Junta Electoral Central (calendario electoral) · Ley Electoral (LOREG, arts. 27, 72, 73, 75, 84, 85, 96, 162 y 163) · Constitución (art. 68) · BOE (resultados de 2023 y Orden INT/650/2026) · INE · Correos.</p>
+    <p>Datos a 11 de octubre de 2026. Si algo cambia, se actualiza en esta misma página. Esta guía no pide el voto para nadie.</p>
+    <p>Lo que pasa y cómo te afecta, sin bandos.</p>
+  </div>
+</section>
+
+</main>
+
+<script>
+  function evento(nombre, dato = '') {
+    try { window.umami?.track(`guia_${nombre}`, { what: dato }); } catch {}
+  }
+
+  // The strip marks the block being read.
+  const celdas = new Map([...document.querySelectorAll('.tira a')].map((a) => [a.getAttribute('href').slice(1), a]));
+  const marcar = (id) => { for (const [clave, a] of celdas) a.setAttribute('aria-current', String(clave === id)); };
+  marcar('inicio');
+  if ('IntersectionObserver' in window) {
+    const vista = new IntersectionObserver((entradas) => {
+      for (const e of entradas) if (e.isIntersecting) marcar(e.target.id);
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    for (const id of celdas.keys()) vista.observe(document.getElementById(id));
+  }
+
+  const bajadas = new Set();
+  addEventListener('scroll', () => {
+    const hecho = (scrollY + innerHeight) / document.documentElement.scrollHeight;
+    for (const [marca, nombre] of [[0.5, 'half'], [0.95, 'end']]) {
+      if (hecho >= marca && !bajadas.has(nombre)) { bajadas.add(nombre); evento('scroll', nombre); }
+    }
+  }, { passive: true });
+
+  document.getElementById('guardar').addEventListener('click', () => { evento('pdf'); print(); });
+  document.querySelector('[data-ev="ig"]').addEventListener('click', () => evento('ig'));
+</script>
+</body>
+</html>

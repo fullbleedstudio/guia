@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="La guía de ¿Qué Cambia? para votar el 29 de noviembre: fechas, voto por correo, mesa electoral y qué pasa con tu voto. Gratis, en tu correo.">
+<meta property="og:title" content="Guía para votar el 29-N sin liarte">
+<meta property="og:description" content="Fechas, voto por correo, mesa electoral y qué pasa con tu voto. Gratis, en tu correo.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="/assets/que-cambia-icono.png">
+<link rel="apple-touch-icon" href="/assets/que-cambia-icono.png">
+<meta property="og:image" content="https://guia.fullbleedstudio.com/assets/que-cambia-og.png">
+<meta property="og:url" content="https://guia.fullbleedstudio.com/">
+<meta name="theme-color" content="#FFD400">
+<meta name="robots" content="noindex">
+<title>Guía para votar el 29-N · ¿Qué Cambia?</title>
+<!-- Same cookieless analytics as the rest of the site; data-domains keeps previews out of the numbers. -->
+<script defer src="https://cloud.umami.is/script.js" data-website-id="1facdecd-7f13-4a94-9b76-18a5593acb29" data-domains="fullbleedstudio.com,www.fullbleedstudio.com,guia.fullbleedstudio.com"></script>
+<style>
+  /* The channel's own look, not the studio's: yellow ground, ink, white cards
+     with a hard shadow, Anton titles. Self-contained like /que.cambia. */
+  @font-face { font-family: 'Anton'; font-weight: 400; font-display: swap; src: url('/assets/fonts/anton-400.woff2') format('woff2'); }
+  @font-face { font-family: 'Barlow Condensed'; font-weight: 600; font-display: swap; src: url('/assets/fonts/barlowcondensed-600.woff2') format('woff2'); }
+  @font-face { font-family: 'Barlow Condensed'; font-weight: 700; font-display: swap; src: url('/assets/fonts/barlowcondensed-700.woff2') format('woff2'); }
+  @font-face { font-family: 'DM Mono'; font-weight: 500; font-display: swap; src: url('/assets/fonts/dmmono-500.woff2') format('woff2'); }
+  :root {
+    --y: #FFD400;
+    --y2: #F6C800; /* one step darker than the ground, for texture only */
+    --k: #111111;
+    --w: #FFFFFF;
+    --anton: 'Anton', Impact, 'Arial Narrow', sans-serif;
+    --texto: 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif;
+    --mono: 'DM Mono', ui-monospace, Menlo, monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; color: var(--k); background: var(--y);
+    background-image: radial-gradient(var(--y2) 2.5px, transparent 3px); background-size: 27px 27px;
+    font: 600 21px/1.28 var(--texto); letter-spacing: 0.005em;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  p, ul, ol, h1, h2, h3, dl, dd, figure { margin: 0; padding: 0; }
+  ul, ol { list-style: none; }
+  a { color: inherit; }
+  b, strong { font-weight: 700; }
+  .ancho { width: 100%; max-width: 720px; margin-inline: auto; padding-inline: 18px; }
+  .anton { font-family: var(--anton); font-weight: 400; text-transform: uppercase; line-height: 1.04; letter-spacing: 0.005em; }
+  .mono { font: 500 13px/1.3 var(--mono); letter-spacing: 0; }
+  /* The caption highlight from the videos: the word that matters, ink on yellow reversed. */
+  .hl { background: var(--k); color: var(--y); padding: 0 0.22em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  h1 .hl { display: inline-block; white-space: nowrap; line-height: 1; padding: 0.06em 0.14em 0.02em; margin-top: 0.08em; }
+  .card { background: var(--w); border: 4px solid var(--k); box-shadow: 6px 7px 0 var(--k); }
+
+
+  .meta { display: flex; justify-content: space-between; gap: 12px; padding-top: 18px; }
+  .meta span:first-child::before { content: "■ "; }
+
+  .marca { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 16px; }
+  .marca img { display: block; width: 74px; height: auto; }
+  .marca p { text-align: right; }
+  .firma { display: block; width: 92px; height: auto; margin-bottom: 14px; }
+
+  .portada { padding-block: 22px 40px; }
+  .portada .fila { display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; }
+  .portada h1 { font-size: clamp(44px, 12.6vw, 96px); margin-top: 20px; }
+  .portada .sub { font-size: 25px; line-height: 1.2; margin-top: 16px; max-width: 26ch; }
+  .quique { flex: none; width: 88px; height: auto; margin-bottom: -4px; }
+
+  /* The form is the page: one field, one button, on the brand's white card. */
+  .alta { margin-top: 24px; padding: 18px 16px 16px; }
+  .alta label { display: block; font: 400 25px/1.1 var(--anton); text-transform: uppercase; margin-bottom: 12px; }
+  .alta form { display: grid; gap: 10px; }
+  .alta input[type="email"] { width: 100%; height: 56px; padding: 0 14px; border: 4px solid var(--k); border-radius: 0; background: var(--w); color: var(--k); font: 600 22px/1 var(--texto); -webkit-appearance: none; appearance: none; }
+  .alta input[type="email"]::placeholder { color: #6B6B6B; }
+  .alta input[type="email"]:focus { outline: none; background: #FFF8D1; }
+  .boton { display: inline-flex; align-items: center; justify-content: center; min-height: 56px; padding: 0 22px; background: var(--k); color: var(--y); border: 4px solid var(--k); border-radius: 0; font: 400 25px/1 var(--anton); text-transform: uppercase; letter-spacing: 0.02em; text-decoration: none; cursor: pointer; }
+  .boton:focus-visible { outline: 3px solid var(--y); outline-offset: 2px; }
+  .boton[disabled] { opacity: 0.6; cursor: default; }
+  .alta .nota { margin-top: 12px; font-size: 18px; line-height: 1.25; }
+  .alta .fallo { margin-top: 10px; font-weight: 700; }
+  .trampa { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .hecho h2 { font: 400 34px/1.05 var(--anton); text-transform: uppercase; }
+  .hecho p { margin-top: 10px; }
+  .hecho .boton { margin-top: 16px; }
+
+  section { padding-block: 30px; }
+  .titulo { font-size: clamp(34px, 9.5vw, 52px); margin-bottom: 18px; }
+  .indice { display: grid; gap: 0; counter-reset: punto; }
+  .indice li { counter-increment: punto; display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: center; padding: 10px 14px; border-top: 3px solid var(--k); }
+  .indice li:first-child { border-top: 0; }
+  .indice li::before { content: counter(punto); width: 40px; height: 40px; background: var(--k); color: var(--y); display: flex; align-items: center; justify-content: center; font: 400 27px/1 var(--anton); transform: rotate(-3deg); }
+  .indice b { display: block; font: 400 22px/1.1 var(--anton); text-transform: uppercase; }
+  .indice span { font-size: 19px; }
+
+  .entra { font-size: 22px; line-height: 1.22; margin: -6px 0 18px; max-width: 30ch; }
+  .muestra { display: grid; gap: 16px; }
+  .fecha { display: grid; grid-template-columns: 112px 1fr; }
+  .fecha .dia { background: var(--k); color: var(--y); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 10px 6px; }
+  .fecha .dia small { font: 500 11px/1.2 var(--mono); text-transform: uppercase; }
+  .fecha .dia b { font: 400 29px/1.02 var(--anton); text-transform: uppercase; }
+  .fecha .que { padding: 12px 14px 13px; }
+  .fecha h3 { font: 400 24px/1.08 var(--anton); text-transform: uppercase; margin-bottom: 5px; }
+  .bulo { position: relative; padding: 16px 16px 15px; }
+  .bulo q { display: block; font-size: 23px; line-height: 1.18; font-weight: 700; quotes: "«" "»"; }
+  .bulo p { margin-top: 10px; font-size: 20px; }
+  .sello { float: right; margin: -4px -4px 6px 12px; border: 4px solid var(--k); padding: 3px 9px 2px; font: 400 23px/1 var(--anton); text-transform: uppercase; transform: rotate(7deg); background: var(--y); }
+
+  .promesas { display: flex; flex-wrap: wrap; gap: 8px; }
+  .promesas li { background: var(--w); border: 3px solid var(--k); padding: 3px 10px 4px; font-weight: 700; font-size: 19px; }
+  .otra { margin-top: 22px; }
+  .pie { padding-block: 8px 34px; font: 500 12.5px/1.5 var(--mono); }
+  .pie p + p { margin-top: 8px; }
+
+  @media (max-width: 380px) {
+    .fechas li, .fecha { grid-template-columns: 90px 1fr; }
+    .fechas .dia b, .fecha .dia b { font-size: 24px; }
+    .fechas .que, .fecha .que { padding-inline: 12px; }
+  }
+  @media (min-width: 640px) {
+    body { font-size: 22px; }
+    .quique { width: 168px; }
+    .alta form { grid-template-columns: 1fr auto; }
+    .fecha { grid-template-columns: 136px 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<header class="portada ancho" id="inicio">
+  <div class="marca"><img src="/assets/que-cambia-logo.png" alt="¿Qué Cambia?" width="484" height="440"><p class="mono">@que.cambia<br>Elecciones · 29 de noviembre</p></div>
+  <div class="fila">
+    <h1 class="anton">La guía para votar <span class="hl">sin liarte</span></h1>
+    <svg class="quique" viewBox="40 -20 470 625" aria-hidden="true"><g transform="rotate(3 250 560)"><g transform="translate(0 0)"><path d="M150,170 C150,60 350,60 350,170 C350,255 250,245 250,345" fill="none" stroke="#111111" stroke-width="100" stroke-linejoin="round"/><circle cx="206" cy="95" r="24" fill="#FFFFFF"/><circle cx="215" cy="95" r="10.1" fill="#111111"/><circle cx="294" cy="95" r="24" fill="#FFFFFF"/><circle cx="303" cy="95" r="10.1" fill="#111111"/><line x1="184" y1="18" x2="228" y2="18" stroke="#111111" stroke-width="11" stroke-linecap="round"/><line x1="272" y1="18" x2="316" y2="18" stroke="#111111" stroke-width="11" stroke-linecap="round"/><path d="M215,300 Q167.5,353.0 140,370" fill="none" stroke="#111111" stroke-width="15" stroke-linecap="round"/><path d="M285,300 Q362.5,293.0 420,250" fill="none" stroke="#111111" stroke-width="15" stroke-linecap="round"/><circle cx="140" cy="370" r="15" fill="#111111"/><circle cx="420" cy="250" r="15" fill="#111111"/></g><circle cx="250" cy="455" r="52" fill="#111111"/><path d="M232,498 L222,572 M268,498 L278,572" stroke="#111111" stroke-width="15" stroke-linecap="round"/><ellipse cx="208" cy="578" rx="30" ry="13" fill="#111111"/><ellipse cx="292" cy="578" rx="30" ry="13" fill="#111111"/></g></svg>
+  </div>
+  <p class="sub">Fechas, voto por correo, mesa electoral y qué pasa con tu voto. En dos minutos y sin bandos.</p>
+
+  <div class="alta card" data-alta>
+    <form action="https://fullbleedstudio.com/api/guia" method="post">
+      <label for="correo">¿A qué correo te la mando?</label>
+      <input id="correo" name="correo" type="email" required maxlength="254" autocomplete="email" inputmode="email" placeholder="tu@correo.com">
+      <div class="trampa" aria-hidden="true">
+        <label for="web">No rellenes este campo</label>
+        <input id="web" name="web" type="text" tabindex="-1" autocomplete="off">
+      </div>
+      <input name="de" type="hidden" value="">
+      <input name="ts" type="hidden" value="">
+      <button class="boton" type="submit">Mándamela</button>
+    </form>
+    <p class="fallo" role="alert" hidden>No se ha podido guardar. Revisa el correo y prueba otra vez.</p>
+    <p class="nota">Es gratis y la abres al momento. También te escribiré cuando cambie algo que te afecte. Te das de baja cuando quieras.</p>
+  </div>
+  <div class="alta card hecho" data-hecho role="status" hidden></div>
+</header>
+
+<main>
+
+<section class="ancho">
+  <h2 class="titulo anton">Qué lleva dentro</h2>
+  <ol class="indice card">
+    <li><div><b>Las fechas</b><span>Las siete que te tocan, y la que te deja sin votar.</span></div></li>
+    <li><div><b>Voto por correo</b><span>Cómo se pide y hasta cuándo, en tres pasos.</span></div></li>
+    <li><div><b>Si vives fuera</b><span>Cómo votar desde el extranjero y hasta cuándo.</span></div></li>
+    <li><div><b>Si te toca mesa</b><span>Qué hacer si no puedes ir y cuánto te pagan.</span></div></li>
+    <li><div><b>El día 29</b><span>Qué llevar, a qué hora y qué no vale.</span></div></li>
+    <li><div><b>Si no te convence nadie</b><span>En blanco, nulo o no ir: no es lo mismo.</span></div></li>
+    <li><div><b>Cómo se cuenta</b><span>Por qué tu voto no pesa igual en cada provincia.</span></div></li>
+    <li><div><b>¿Verdad o bulo?</b><span>Cuatro cosas que se repiten y no son verdad.</span></div></li>
+  </ol>
+</section>
+
+<section class="ancho">
+  <h2 class="titulo anton">Un vistazo por dentro</h2>
+  <p class="entra">Dos tarjetas sacadas de la guía. Todo va así: corto y al grano.</p>
+  <div class="muestra">
+    <div class="fecha card"><div class="dia"><small>Hasta el</small><b>19 nov.</b></div><div class="que"><h3>Pedir el voto por correo</h3><p>Último día. Después ya no se puede.</p></div></div>
+    <div class="bulo card"><span class="sello">Falso</span><q>El voto en blanco se lo queda el partido que gana.</q><p>No va a ningún partido. Tampoco al más votado.</p></div>
+  </div>
+  <ul class="promesas otra">
+    <li>Sin bandos</li><li>Con fuentes oficiales</li><li>No pide el voto para nadie</li>
+  </ul>
+  <p class="otra"><a class="boton" href="#inicio" id="subir">Quiero la guía</a></p>
+</section>
+
+</main>
+
+<footer class="pie ancho">
+  <img class="firma" src="/assets/que-cambia-logo.png" alt="¿Qué Cambia?" width="484" height="440" loading="lazy">
+  <p>Solo uso tu correo para mandarte la guía y avisarte de lo que cambie. Para borrarlo, responde a cualquiera de mis correos. <a href="https://fullbleedstudio.com/privacidad">Privacidad</a>.</p>
+  <p>Lo que pasa y cómo te afecta, sin bandos.</p>
+</footer>
+
+<script>
+  const consulta = new URLSearchParams(location.search);
+  // Which network the link was sent from: the private message adds ?de=<network>.
+  const origen = consulta.get('de') || '';
+  const alta = document.querySelector('[data-alta]');
+  const hecho = document.querySelector('[data-hecho]');
+  const form = alta.querySelector('form');
+  const fallo = alta.querySelector('.fallo');
+  const boton = form.querySelector('button');
+  form.elements.de.value = origen;
+  // When the page was opened: the server ignores a form sent faster than a person types.
+  form.elements.ts.value = Date.now();
+
+  function evento(nombre, dato = '') {
+    try { window.umami?.track(`guia_${nombre}`, { what: dato, from: origen }); } catch {}
+  }
+
+  function mostrarHecho(enlace, enviada) {
+    alta.hidden = true;
+    hecho.replaceChildren();
+    const poner = (etiqueta, texto, clase) => {
+      const el = document.createElement(etiqueta);
+      if (clase) el.className = clase;
+      el.textContent = texto;
+      hecho.append(el);
+      return el;
+    };
+    poner('h2', 'Ya la tienes');
+    poner('p', enviada
+      ? 'Ábrela ahora. También te la he mandado al correo: si no la ves, mira en spam y márcala como «no es spam» para que te lleguen las siguientes.'
+      : 'Ábrela ahora. Te he apuntado para avisarte de lo que cambie.');
+    poner('a', 'Abrir la guía', 'boton').href = '/29n';
+    hecho.hidden = false;
+  }
+
+  // On the first character, not on focus: the button at the bottom puts the cursor here itself.
+  form.elements.correo.addEventListener('input', () => evento('form_start'), { once: true });
+  document.getElementById('subir').addEventListener('click', () => {
+    evento('cta');
+    setTimeout(() => form.elements.correo.focus({ preventScroll: true }), 400);
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    fallo.hidden = true;
+    boton.disabled = true;
+    try {
+      const r = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { accept: 'application/json' } });
+      const datos = await r.json().catch(() => ({}));
+      if (!r.ok || !datos.ok) throw new Error('rejected');
+      evento('form_submit', datos.enviada ? 'correo' : 'pagina');
+      mostrarHecho(datos.enlace, datos.enviada);
+    } catch {
+      evento('form_submit', 'bloqueado');
+      mostrarHecho('/29n', false);
+    }
+  });
+
+  // Without JavaScript the form posts and comes back here with ?ok or ?error.
+  if (consulta.has('ok')) mostrarHecho('', true);
+  if (consulta.has('error')) fallo.hidden = false;
+</script>
+</body>
+</html>
