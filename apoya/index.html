@@ -16,6 +16,7 @@
 <title>¿Me invitas a un café? · ¿Qué Cambia?</title>
 <!-- Same cookieless analytics as the rest of the site; data-domains keeps previews out of the numbers. -->
 <script defer src="https://cloud.umami.is/script.js" data-website-id="1facdecd-7f13-4a94-9b76-18a5593acb29" data-domains="fullbleedstudio.com,www.fullbleedstudio.com,guia.fullbleedstudio.com"></script>
+<script>if (new URLSearchParams(location.search).has('gracias')) document.documentElement.classList.add('ok');</script>
 <style>
   /* The channel's own look, as on /que.cambia/guia. Self-contained. */
   @font-face { font-family: 'Anton'; font-weight: 400; font-display: swap; src: url('/assets/fonts/anton-400.woff2') format('woff2'); }
@@ -67,11 +68,16 @@
   .apoyo .nota { margin-top: 12px; font-size: 18px; line-height: 1.25; }
   .boton { display: inline-flex; align-items: center; justify-content: center; min-height: 60px; padding: 0 22px; background: var(--k); color: var(--y); border: 4px solid var(--k); border-radius: 0; font: 400 27px/1 var(--anton); text-transform: uppercase; letter-spacing: 0.02em; text-decoration: none; cursor: pointer; }
   .boton:focus-visible { outline: 3px solid var(--w); outline-offset: 2px; }
+  /* Two pages in one file: the ask, and the thanks a payment comes back to. */
+  .si-ok { display: none; }
+  html.ok .si-ok { display: revert; }
+  html.ok .no-ok { display: none; }
   .gracias h2 { font: 400 38px/1.05 var(--anton); text-transform: uppercase; }
   .gracias p { margin-top: 10px; }
 
   .promesas { display: flex; flex-wrap: wrap; gap: 8px; padding-block: 26px 30px; }
   .promesas li { background: var(--w); border: 3px solid var(--k); padding: 3px 10px 4px; font-weight: 700; font-size: 19px; }
+  html.ok .pie { padding-top: 34px; }
   .pie { padding-block: 8px 34px; font: 500 12.5px/1.5 var(--mono); }
   .pie p + p { margin-top: 8px; }
 
@@ -87,13 +93,14 @@
 <header class="portada ancho">
   <div class="marca"><img src="/assets/que-cambia-logo.png" alt="¿Qué Cambia?" width="484" height="440"><p class="mono">@que.cambia<br>Sin bandos</p></div>
   <div class="fila">
-    <h1 class="anton">¿Me invitas a <span class="hl">un café?</span></h1>
-    <svg class="quique" viewBox="40 -20 590 625" aria-hidden="true"><g transform="rotate(3 250 560)"><g transform="translate(0 0)"><path d="M150,170 C150,60 350,60 350,170 C350,255 250,245 250,345" fill="none" stroke="#111111" stroke-width="100" stroke-linejoin="round"/><circle cx="206" cy="95" r="24" fill="#FFFFFF"/><circle cx="217" cy="98" r="10.1" fill="#111111"/><circle cx="294" cy="95" r="24" fill="#FFFFFF"/><circle cx="305" cy="98" r="10.1" fill="#111111"/><path d="M184,24 Q206,6 228,22" fill="none" stroke="#111111" stroke-width="11" stroke-linecap="round"/><path d="M272,22 Q294,6 316,24" fill="none" stroke="#111111" stroke-width="11" stroke-linecap="round"/><path d="M215,300 Q167.5,353.0 140,370" fill="none" stroke="#111111" stroke-width="15" stroke-linecap="round"/><path d="M285,300 Q390,300 462,250" fill="none" stroke="#111111" stroke-width="15" stroke-linecap="round"/><circle cx="140" cy="370" r="15" fill="#111111"/><g transform="translate(462 250) scale(1.3) translate(-372 -245)"><path d="M436,188 q-10,-13 0,-25 q10,-12 0,-25 M464,188 q-10,-13 0,-25 q10,-12 0,-25" fill="none" stroke="#111111" stroke-width="8" stroke-linecap="round"/><path d="M418,221 q-46,0 -46,24 q0,24 46,24" fill="none" stroke="#111111" stroke-width="10"/><rect x="418" y="206" width="64" height="66" rx="9" fill="#FFFFFF" stroke="#111111" stroke-width="11"/><path d="M450,256 l-14,-15 a8.5,8.5 0 0 1 14,-10 a8.5,8.5 0 0 1 14,10 z" fill="#FFD400" stroke="#111111" stroke-width="3" stroke-linejoin="round"/></g><circle cx="462" cy="250" r="19" fill="#111111"/></g><circle cx="250" cy="455" r="52" fill="#111111"/><path d="M232,498 L222,572 M268,498 L278,572" stroke="#111111" stroke-width="15" stroke-linecap="round"/><ellipse cx="208" cy="578" rx="30" ry="13" fill="#111111"/><ellipse cx="292" cy="578" rx="30" ry="13" fill="#111111"/></g></svg>
+    <h1 class="anton no-ok">¿Me invitas a <span class="hl">un café?</span></h1>
+    <h1 class="anton si-ok">¡Gracias por <span class="hl">el café!</span></h1>
+    <svg class="quique" viewBox="40 -20 590 625" aria-hidden="true"><g transform="rotate(3 250 560)"><g transform="translate(0 0)"><path d="M150,170 C150,60 350,60 350,170 C350,255 250,245 250,345" fill="none" stroke="#111111" stroke-width="100" stroke-linejoin="round"/><circle cx="206" cy="95" r="24" fill="#FFFFFF"/><circle cx="217" cy="98" r="10.1" fill="#111111"/><circle cx="294" cy="95" r="24" fill="#FFFFFF"/><circle cx="305" cy="98" r="10.1" fill="#111111"/><path d="M184,24 Q206,6 228,22" fill="none" stroke="#111111" stroke-width="11" stroke-linecap="round"/><path d="M272,22 Q294,6 316,24" fill="none" stroke="#111111" stroke-width="11" stroke-linecap="round"/><path d="M215,300 Q167.5,353.0 140,370" fill="none" stroke="#111111" stroke-width="15" stroke-linecap="round"/><path d="M285,300 Q390,300 462,250" fill="none" stroke="#111111" stroke-width="15" stroke-linecap="round"/><circle cx="140" cy="370" r="15" fill="#111111"/><g transform="translate(462 250) scale(1.3) translate(-372 -245)"><path d="M436,188 q-10,-13 0,-25 q10,-12 0,-25 M464,188 q-10,-13 0,-25 q10,-12 0,-25" fill="none" stroke="#111111" stroke-width="8" stroke-linecap="round"/><path d="M418,221 q-46,0 -46,24 q0,24 46,24" fill="none" stroke="#111111" stroke-width="10"/><rect x="418" y="206" width="64" height="66" rx="9" fill="#FFFFFF" stroke="#111111" stroke-width="11"/><path d="M450,256 l-14,-15 a8.5,8.5 0 0 1 14,-10 a8.5,8.5 0 0 1 14,10 z" fill="#FFD400" stroke="#111111" stroke-width="3" stroke-linejoin="round"/></g><circle cx="462" cy="250" r="19" fill="#111111"/><g class="si-ok" fill="#FFFFFF" stroke="#111111" stroke-width="7" stroke-linejoin="round"><path d="M430,95 l-26,-28 a16,16 0 0 1 26,-19 a16,16 0 0 1 26,19 z"/><path d="M560,60 l-20,-21 a12,12 0 0 1 20,-14 a12,12 0 0 1 20,14 z"/></g></g><circle cx="250" cy="455" r="52" fill="#111111"/><path d="M232,498 L222,572 M268,498 L278,572" stroke="#111111" stroke-width="15" stroke-linecap="round"/><ellipse cx="208" cy="578" rx="30" ry="13" fill="#111111"/><ellipse cx="292" cy="578" rx="30" ry="13" fill="#111111"/></g></svg>
   </div>
 </header>
 
 <main class="ancho">
-  <div class="apoyo card" data-apoyo>
+  <div class="apoyo card no-ok" data-apoyo>
     <p class="hola">¡Hola! Soy Andrés 👋</p>
     <p>Soy la persona detrás de ¿Qué Cambia?</p>
     <p>Hago el canal yo solo, en mi tiempo libre: leo los programas y el BOE, contrasto cada dato y lo cuento en un minuto para que sepas qué cambia para ti. <b>Sin partidos, sin patrocinadores</b> y sin nadie que me diga qué contar.</p>
@@ -104,19 +111,21 @@
     <p class="nota">Tú eliges cuánto. Pago seguro con tarjeta, Apple Pay o Google Pay.</p>
   </div>
   <!-- Stripe sends the visitor back here with ?gracias once the payment is done. -->
-  <div class="apoyo card gracias" data-gracias role="status" hidden>
-    <h2>¡Gracias de corazón! 💛</h2>
-    <p>Tu apoyo me ayuda a seguir haciendo ¿Qué Cambia? por mi cuenta.</p>
+  <div class="apoyo card gracias si-ok" role="status">
+    <h2>¡Recibido! 💛</h2>
+    <p>De verdad, gracias. Con tu café cubro gastos del canal y puedo dedicarle más tiempo a ¿Qué Cambia?</p>
+    <p>Sigo sin partidos ni patrocinadores, y eso es gracias a gente como tú.</p>
     <a class="boton" href="https://www.instagram.com/que.cambia/" rel="noopener">Volver a los vídeos</a>
   </div>
-  <ul class="promesas">
+  <ul class="promesas no-ok">
     <li>Sin bandos</li><li>Sin patrocinadores</li><li>Todo seguirá gratis</li>
   </ul>
 </main>
 
 <footer class="pie ancho">
   <img class="firma" src="/assets/que-cambia-logo.png" alt="¿Qué Cambia?" width="484" height="440" loading="lazy">
-  <p>El pago lo gestiona Stripe. Aquí no se guarda ningún dato tuyo. <a href="https://fullbleedstudio.com/privacidad">Privacidad</a>.</p>
+  <p class="no-ok">El pago lo gestiona Stripe. Aquí no se guarda ningún dato tuyo. <a href="https://fullbleedstudio.com/privacidad">Privacidad</a>.</p>
+  <p class="si-ok">¿Algún problema con el pago? Escríbeme a <a href="mailto:quecambia@fullbleedstudio.com">quecambia@fullbleedstudio.com</a>.</p>
   <p>Lo que pasa y cómo te afecta, sin bandos.</p>
 </footer>
 
@@ -141,8 +150,7 @@
   pagar.addEventListener('click', () => evento('cta'));
 
   if (consulta.has('gracias')) {
-    document.querySelector('[data-apoyo]').hidden = true;
-    document.querySelector('[data-gracias]').hidden = false;
+    document.title = '¡Gracias! · ¿Qué Cambia?';
     evento('gracias');
   }
 </script>
