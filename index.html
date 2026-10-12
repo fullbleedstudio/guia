@@ -83,6 +83,8 @@
   .hecho h2 { font: 400 34px/1.05 var(--anton); text-transform: uppercase; }
   .hecho p { margin-top: 10px; }
   .hecho .boton { margin-top: 16px; }
+  .hecho .apoyo { margin-top: 18px; font-size: 22px; line-height: 1.25; }
+  .hecho .apoyo a { display: inline-block; }
   .aviso { display: flex; gap: 14px; align-items: center; margin-top: 18px; padding: 16px; background: var(--k); color: var(--w); font-size: 26px; line-height: 1.2; font-weight: 700; }
   .aviso .senal { flex: none; width: 44px; height: 44px; background: var(--y); color: var(--k); display: flex; align-items: center; justify-content: center; font: 400 34px/1 var(--anton); transform: rotate(4deg); }
   .aviso p { margin: 0; }
@@ -244,6 +246,15 @@
       poner('p', 'Ábrela cuando quieras.');
       poner('a', 'Abrir la guía', 'boton').href = '/29n';
     }
+    // A line of text, not a second button: the one thing to do here is still to open the email.
+    const apoyo = poner('p', '¿Quieres apoyar el canal? ', 'apoyo');
+    const cafe = document.createElement('a');
+    cafe.textContent = 'Invítame a un café';
+    cafe.href = '/apoya?de=alta';
+    cafe.target = '_blank';
+    cafe.rel = 'noopener';
+    cafe.addEventListener('click', () => evento('cafe'));
+    apoyo.append(cafe, ' ☕');
     hecho.hidden = false;
   }
 
