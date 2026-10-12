@@ -67,6 +67,8 @@
   .apoyo .hola { font: 400 30px/1.05 var(--anton); text-transform: uppercase; }
   .apoyo .hola + p { margin-top: 6px; }
   .apoyo .boton { margin-top: 18px; width: 100%; }
+  .apoyo.canal { margin-top: 16px; }
+  .apoyo.canal a { color: inherit; font-weight: 700; }
   .apoyo .nota { margin-top: 12px; font-size: 18px; line-height: 1.25; }
   .boton { display: inline-flex; align-items: center; justify-content: center; min-height: 60px; padding: 0 22px; background: var(--k); color: var(--y); border: 4px solid var(--k); border-radius: 0; font: 400 27px/1 var(--anton); text-transform: uppercase; letter-spacing: 0.02em; text-decoration: none; cursor: pointer; }
   .boton:focus-visible { outline: 3px solid var(--w); outline-offset: 2px; }
@@ -110,7 +112,7 @@
     <p>No hay que dar nada para seguir viéndolo todo: el canal es y va a seguir siendo gratis. Pero cada café me permite priorizar más este proyecto, y hacerlo sin depender de nadie más que de vosotros.&nbsp;💛</p>
     <!-- The Stripe payment link. The script below adds the language and where the visitor came from. -->
     <a class="boton" id="pagar" href="https://buy.stripe.com/eVq6oJ9h5flP6o92gAcZa00" rel="noopener">Invítame a un café ☕</a>
-    <p class="nota">Tú eliges cuánto. Pago seguro con tarjeta, Apple Pay o Google Pay.</p>
+    <p class="nota">Es una propina voluntaria por los vídeos. Tú eliges cuánto. Pago seguro con tarjeta, Apple Pay o Google Pay.</p>
   </div>
   <!-- Stripe sends the visitor back here with ?gracias once the payment is done. -->
   <div class="apoyo card gracias si-ok" role="status">
@@ -118,6 +120,11 @@
     <p>De verdad, gracias. Con tu café cubro gastos del canal y puedo dedicarle más tiempo a <span class="qc">¿Qué Cambia?</span></p>
     <p>Que pueda seguir haciéndolo por mi cuenta es gracias a gente como tú.</p>
     <a class="boton" href="https://www.instagram.com/que.cambia/" rel="noopener">Volver a los vídeos</a>
+  </div>
+  <div class="apoyo card canal no-ok">
+    <p class="hola">Qué es el canal</p>
+    <p><span class="qc">¿Qué Cambia?</span> son vídeos cortos que explican lo que pasa y cómo te afecta: elecciones, impuestos, vivienda, pensiones. Con fuentes oficiales y sin opinar.</p>
+    <p>Todos los vídeos se ven gratis en <a href="https://www.instagram.com/que.cambia/" rel="noopener">Instagram</a> y <a href="https://www.tiktok.com/@que.cambia" rel="noopener">TikTok</a>, y aquí tienes la <a href="https://fullbleedstudio.com/guia?de=apoya">guía gratis para votar el 29-N</a>.</p>
   </div>
   <ul class="promesas no-ok">
     <li>Hecho por una persona</li><li>Con fuentes oficiales</li><li>Todo seguirá gratis</li>
