@@ -153,7 +153,8 @@
 
   if (consulta.has('gracias')) {
     document.title = '¡Gracias! · ¿Qué Cambia?';
-    evento('gracias');
+    // The analytics script is deferred, so it does not exist yet while this runs.
+    addEventListener('load', () => evento('gracias'));
   }
 </script>
 </body>
