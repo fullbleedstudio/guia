@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="¿Qué Cambia? lo hace una sola persona, por su cuenta. Si te ha servido, puedes invitarle a un café.">
-<meta property="og:title" content="¿Me invitas a un café? · ¿Qué Cambia?">
-<meta property="og:description" content="Hago el canal yo solo, por mi cuenta. Si te ha servido, puedes invitarme a un café.">
+<meta name="description" content="¿Qué Cambia? lo hace una sola persona, por su cuenta. Si te ha servido, puedes apoyar el proyecto.">
+<meta property="og:title" content="Apoya el proyecto · ¿Qué Cambia?">
+<meta property="og:description" content="Hago el canal yo solo, por mi cuenta. Si te ha servido, puedes apoyar el proyecto.">
 <meta property="og:type" content="website">
 <link rel="icon" type="image/png" href="/assets/que-cambia-icono.png">
 <link rel="apple-touch-icon" href="/assets/que-cambia-icono.png">
@@ -13,7 +13,7 @@
 <meta property="og:url" content="https://guia.fullbleedstudio.com/apoya">
 <meta name="theme-color" content="#FFD400">
 <meta name="robots" content="noindex">
-<title>¿Me invitas a un café? · ¿Qué Cambia?</title>
+<title>Apoya el proyecto · ¿Qué Cambia?</title>
 <!-- Same cookieless analytics as the rest of the site; data-domains keeps previews out of the numbers. -->
 <script defer src="https://cloud.umami.is/script.js" data-website-id="1facdecd-7f13-4a94-9b76-18a5593acb29" data-domains="fullbleedstudio.com,www.fullbleedstudio.com,guia.fullbleedstudio.com"></script>
 <script>if (new URLSearchParams(location.search).has('gracias')) document.documentElement.classList.add('ok');</script>
@@ -76,6 +76,21 @@
   .apoyo .nota { margin-top: 12px; font-size: 18px; line-height: 1.25; }
   .boton { display: inline-flex; align-items: center; justify-content: center; min-height: 60px; padding: 0 22px; background: var(--k); color: var(--y); border: 4px solid var(--k); border-radius: 0; font: 400 27px/1 var(--anton); text-transform: uppercase; letter-spacing: 0.02em; text-decoration: none; cursor: pointer; }
   .boton:focus-visible { outline: 3px solid var(--w); outline-offset: 2px; }
+  .boton.claro { background: var(--w); color: var(--k); }
+  /* Three amounts side by side, and a field for any other. */
+  .importes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 18px; }
+  .apoyo .importes .boton { margin-top: 0; padding: 0; }
+  .otra { margin-top: 14px; }
+  .otra label { display: block; font-weight: 700; }
+  .otra div { display: flex; gap: 10px; margin-top: 6px; }
+  .otra input { flex: 1; min-width: 0; min-height: 60px; padding: 0 12px; background: var(--w); color: var(--k); border: 4px solid var(--k); border-radius: 0; font: 400 27px/1 var(--anton); }
+  .otra input:focus-visible { outline: 3px solid var(--y); outline-offset: 2px; }
+  .apoyo .otra .boton { flex: none; width: auto; margin-top: 0; }
+  /* Pointer over a button: it turns the brand yellow, ink on top. */
+  @media (hover: hover) {
+    .importes .boton, .otra .boton { transition: background-color 0.12s, color 0.12s; }
+    .importes .boton:hover, .otra .boton:hover { background: var(--y); color: var(--k); }
+  }
   /* Two pages in one file: the ask, and the thanks a payment comes back to. */
   .si-ok { display: none; }
   html.ok .si-ok { display: revert; }
@@ -101,8 +116,8 @@
 <header class="portada ancho">
   <div class="marca"><img src="/assets/que-cambia-logo.png" alt="¿Qué Cambia?" width="484" height="440"><p class="mono">@que.cambia</p></div>
   <div class="fila">
-    <h1 class="anton no-ok">¿Me invitas a <span class="hl">un café?</span></h1>
-    <h1 class="anton si-ok">¡Gracias por <span class="hl">el café!</span></h1>
+    <h1 class="anton no-ok">Apoya <span class="hl">el proyecto</span></h1>
+    <h1 class="anton si-ok">¡Gracias por <span class="hl">tu apoyo!</span></h1>
     <svg class="quique" viewBox="40 -20 590 625" aria-hidden="true"><g transform="rotate(3 250 560)"><g transform="translate(0 0)"><path d="M150,170 C150,60 350,60 350,170 C350,255 250,245 250,345" fill="none" stroke="#111111" stroke-width="100" stroke-linejoin="round"/><circle cx="206" cy="95" r="24" fill="#FFFFFF"/><circle cx="217" cy="98" r="10.1" fill="#111111"/><circle cx="294" cy="95" r="24" fill="#FFFFFF"/><circle cx="305" cy="98" r="10.1" fill="#111111"/><path d="M184,24 Q206,6 228,22" fill="none" stroke="#111111" stroke-width="11" stroke-linecap="round"/><path d="M272,22 Q294,6 316,24" fill="none" stroke="#111111" stroke-width="11" stroke-linecap="round"/><path d="M215,300 Q167.5,353.0 140,370" fill="none" stroke="#111111" stroke-width="15" stroke-linecap="round"/><path d="M285,300 Q390,300 462,250" fill="none" stroke="#111111" stroke-width="15" stroke-linecap="round"/><circle cx="140" cy="370" r="15" fill="#111111"/><g transform="translate(462 250) scale(1.3) translate(-372 -245)"><path d="M436,188 q-10,-13 0,-25 q10,-12 0,-25 M464,188 q-10,-13 0,-25 q10,-12 0,-25" fill="none" stroke="#111111" stroke-width="8" stroke-linecap="round"/><path d="M418,221 q-46,0 -46,24 q0,24 46,24" fill="none" stroke="#111111" stroke-width="10"/><rect x="418" y="206" width="64" height="66" rx="9" fill="#FFFFFF" stroke="#111111" stroke-width="11"/><path d="M450,256 l-14,-15 a8.5,8.5 0 0 1 14,-10 a8.5,8.5 0 0 1 14,10 z" fill="#FFD400" stroke="#111111" stroke-width="3" stroke-linejoin="round"/></g><circle cx="462" cy="250" r="19" fill="#111111"/><g class="si-ok" fill="#FFFFFF" stroke="#111111" stroke-width="7" stroke-linejoin="round"><path d="M430,95 l-26,-28 a16,16 0 0 1 26,-19 a16,16 0 0 1 26,19 z"/><path d="M560,60 l-20,-21 a12,12 0 0 1 20,-14 a12,12 0 0 1 20,14 z"/></g></g><circle cx="250" cy="455" r="52" fill="#111111"/><path d="M232,498 L222,572 M268,498 L278,572" stroke="#111111" stroke-width="15" stroke-linecap="round"/><ellipse cx="208" cy="578" rx="30" ry="13" fill="#111111"/><ellipse cx="292" cy="578" rx="30" ry="13" fill="#111111"/></g></svg>
   </div>
 </header>
@@ -112,16 +127,26 @@
     <p class="hola">¡Hola! Soy Andrés 👋</p>
     <p>Soy la persona detrás de <span class="qc">¿Qué Cambia?</span></p>
     <p>Hago el canal yo solo, en mi tiempo libre: leo las fuentes oficiales, contrasto cada dato y lo cuento de forma rápida y clara para que sepas qué cambia para ti. Por mi cuenta, sin nadie que me diga qué contar.</p>
-    <p>Si algún vídeo te ha aclarado una duda o te ha ahorrado un rato de buscar, puedes invitarme a un café. Cada uno me ayuda a cubrir los gastos del canal.</p>
-    <p>No hay que dar nada para seguir viéndolo todo: el canal es y va a seguir siendo gratis. Pero cada café me permite priorizar más este proyecto, y hacerlo sin depender de nadie más que de vosotros.&nbsp;💛</p>
-    <!-- The Stripe payment link. The script below adds the language and where the visitor came from. -->
-    <a class="boton" id="pagar" href="https://buy.stripe.com/eVq6oJ9h5flP6o92gAcZa00" rel="noopener">Invítame a un café ☕</a>
-    <p class="nota">Es una propina voluntaria por los vídeos. Tú eliges cuánto. Pago seguro con tarjeta, Apple Pay o Google Pay.</p>
+    <p>Si algún vídeo te ha aclarado una duda o te ha ahorrado un rato de buscar, puedes apoyar el proyecto. Cada aportación me ayuda a cubrir los gastos del canal.</p>
+    <p>No hay que dar nada para seguir viéndolo todo: el canal es y va a seguir siendo gratis. Pero cada aportación me permite priorizar más este proyecto, y hacerlo sin depender de nadie más que de vosotros.&nbsp;💛</p>
+    <!-- The Stripe payment link, once per amount: __prefilled_amount (in cents) opens it with that amount
+         already typed in. The script below adds the language and where the visitor came from. -->
+    <div class="importes">
+      <a class="boton" href="https://buy.stripe.com/eVq6oJ9h5flP6o92gAcZa00?locale=es&amp;__prefilled_amount=300" rel="noopener" data-importe="3">3&nbsp;€</a>
+      <a class="boton" href="https://buy.stripe.com/eVq6oJ9h5flP6o92gAcZa00?locale=es&amp;__prefilled_amount=500" rel="noopener" data-importe="5">5&nbsp;€</a>
+      <a class="boton" href="https://buy.stripe.com/eVq6oJ9h5flP6o92gAcZa00?locale=es&amp;__prefilled_amount=1000" rel="noopener" data-importe="10">10&nbsp;€</a>
+    </div>
+    <!-- Without JavaScript this opens the same link, where the amount can be typed. -->
+    <form class="otra" action="https://buy.stripe.com/eVq6oJ9h5flP6o92gAcZa00" method="get">
+      <label for="cantidad">Otra cantidad (€)</label>
+      <div><input id="cantidad" type="number" inputmode="numeric" min="3" max="999" step="1" placeholder="20" required><button class="boton claro">Apoyar</button></div>
+    </form>
+    <p class="nota">Es una aportación voluntaria por los vídeos. Pago seguro con tarjeta, Apple Pay o Google Pay.</p>
   </div>
   <!-- Stripe sends the visitor back here with ?gracias once the payment is done. -->
   <div class="apoyo card gracias si-ok" role="status">
     <h2>¡Recibido! 💛</h2>
-    <p>De verdad, gracias. Con tu café cubro gastos del canal y puedo dedicarle más tiempo a <span class="qc">¿Qué Cambia?</span></p>
+    <p>De verdad, gracias. Con tu apoyo cubro gastos del canal y puedo dedicarle más tiempo a <span class="qc">¿Qué Cambia?</span></p>
     <p>Que pueda seguir haciéndolo por mi cuenta es gracias a gente como tú.</p>
     <a class="boton" href="https://www.instagram.com/que.cambia/" rel="noopener">Volver a los vídeos</a>
   </div>
@@ -155,19 +180,30 @@
   // payment's reference, so a payment says where it came from. Stripe takes letters,
   // digits, dashes and underscores there.
   const origen = (consulta.get('de') || '').replace(/[^a-z0-9_-]/gi, '').slice(0, 40);
-  const pagar = document.getElementById('pagar');
+  const otra = document.querySelector('.otra');
 
-  function evento(nombre) {
-    try { window.umami?.track(`cafe_${nombre}`, { from: origen }); } catch {}
+  function evento(nombre, importe = '') {
+    try { window.umami?.track(`cafe_${nombre}`, { from: origen, amount: importe }); } catch {}
   }
 
-  if (pagar.getAttribute('href')) {
-    const destino = new URL(pagar.href);
-    destino.searchParams.set('locale', 'es');
-    if (origen) destino.searchParams.set('client_reference_id', origen);
-    pagar.href = destino.href;
+  // The payment link with the amount, in euros, already typed in.
+  function destino(euros) {
+    const enlace = new URL(otra.action);
+    enlace.searchParams.set('locale', 'es');
+    if (origen) enlace.searchParams.set('client_reference_id', origen);
+    enlace.searchParams.set('__prefilled_amount', String(Math.round(euros * 100)));
+    return enlace.href;
   }
-  pagar.addEventListener('click', () => evento('cta'));
+  for (const a of document.querySelectorAll('[data-importe]')) {
+    a.href = destino(Number(a.dataset.importe));
+    a.addEventListener('click', () => evento('cta', a.dataset.importe));
+  }
+  // The browser has already checked the field against its minimum when this runs.
+  otra.addEventListener('submit', (e) => {
+    e.preventDefault();
+    evento('cta', 'otra');
+    location.href = destino(Number(otra.elements.cantidad.value));
+  });
 
   if (consulta.has('gracias')) {
     document.title = '¡Gracias! · ¿Qué Cambia?';

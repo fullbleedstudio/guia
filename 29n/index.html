@@ -153,6 +153,19 @@
   .apoyo .taza { display: block; width: 100%; height: auto; }
   .apoyo .boton { width: 100%; min-height: 58px; font-size: 25px; }
   .apoyo .nota { font-size: 18px; line-height: 1.25; }
+  .importes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 18px; }
+  .apoyo .importes .boton { padding: 0; }
+  .otra { margin-top: 14px; }
+  .otra label { display: block; font-weight: 700; font-size: 20px; }
+  .otra div { display: flex; gap: 10px; margin-top: 6px; }
+  .otra input { flex: 1; min-width: 0; min-height: 58px; padding: 0 12px; background: var(--w); color: var(--k); border: 4px solid var(--k); border-radius: 0; font: 400 25px/1 var(--anton); }
+  .otra input:focus-visible { outline: 3px solid var(--y); outline-offset: 2px; }
+  .apoyo .otra .boton { flex: none; width: auto; }
+  /* Pointer over a button: it turns the brand yellow, ink on top. */
+  @media (hover: hover) {
+    .importes .boton, .otra .boton { transition: background-color 0.12s, color 0.12s; }
+    .importes .boton:hover, .otra .boton:hover { background: var(--y); color: var(--k); }
+  }
   .apoyo .qc { background: var(--y); padding: 0 0.2em; font-weight: 700; white-space: nowrap; }
   .botones { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
   .boton { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 20px; background: var(--k); color: var(--y); border: 4px solid var(--k); font: 400 22px/1 var(--anton); text-transform: uppercase; letter-spacing: 0.02em; text-decoration: none; cursor: pointer; }
@@ -320,11 +333,18 @@
     <div class="asoma" aria-hidden="true"><svg class="taza" viewBox="40 -20 590 625"><g transform="rotate(3 250 560)"><g transform="translate(0 0)"><path d="M150,170 C150,60 350,60 350,170 C350,255 250,245 250,345" fill="none" stroke="#111111" stroke-width="100" stroke-linejoin="round"/><circle cx="206" cy="95" r="24" fill="#FFFFFF"/><circle cx="211" cy="104" r="10.1" fill="#111111"/><circle cx="294" cy="95" r="24" fill="#FFFFFF"/><circle cx="299" cy="104" r="10.1" fill="#111111"/><path d="M184,24 Q206,6 228,22" fill="none" stroke="#111111" stroke-width="11" stroke-linecap="round"/><path d="M272,22 Q294,6 316,24" fill="none" stroke="#111111" stroke-width="11" stroke-linecap="round"/><path d="M215,300 Q167.5,353.0 140,370" fill="none" stroke="#111111" stroke-width="15" stroke-linecap="round"/><path d="M285,300 Q390,300 462,250" fill="none" stroke="#111111" stroke-width="15" stroke-linecap="round"/><circle cx="140" cy="370" r="15" fill="#111111"/><g transform="translate(462 250) scale(1.3) translate(-372 -245)"><path d="M436,188 q-10,-13 0,-25 q10,-12 0,-25 M464,188 q-10,-13 0,-25 q10,-12 0,-25" fill="none" stroke="#111111" stroke-width="8" stroke-linecap="round"/><path d="M418,221 q-46,0 -46,24 q0,24 46,24" fill="none" stroke="#111111" stroke-width="10"/><rect x="418" y="206" width="64" height="66" rx="9" fill="#FFFFFF" stroke="#111111" stroke-width="11"/><path d="M450,256 l-14,-15 a8.5,8.5 0 0 1 14,-10 a8.5,8.5 0 0 1 14,10 z" fill="#FFD400" stroke="#111111" stroke-width="3" stroke-linejoin="round"/></g><circle cx="462" cy="250" r="19" fill="#111111"/></g><circle cx="250" cy="455" r="52" fill="#111111"/><path d="M232,498 L222,572 M268,498 L278,572" stroke="#111111" stroke-width="15" stroke-linecap="round"/><ellipse cx="208" cy="578" rx="30" ry="13" fill="#111111"/><ellipse cx="292" cy="578" rx="30" ry="13" fill="#111111"/></g></svg></div>
     <h2 class="anton">¿Te ha <span class="hl">servido?</span></h2>
     <p><b>¡Hola! Soy Andrés 👋</b> Hago <span class="qc">¿Qué Cambia?</span> yo solo, en mi tiempo libre.</p>
-    <p>Si esta guía te ha ahorrado un rato, ¿me invitas a un café? Cada uno me ayuda a seguir haciéndolo por mi cuenta.&nbsp;💛</p>
-    <div class="botones">
-      <a class="boton" href="https://buy.stripe.com/eVq6oJ9h5flP6o92gAcZa00?locale=es&amp;client_reference_id=guia" rel="noopener" data-ev="cafe">Invítame a un café ☕</a>
+    <p>Si esta guía o los vídeos que subo cada día te han ahorrado un rato o enseñado algo, puedes apoyar el proyecto. Cada aportación me ayuda a seguir haciéndolo por mi cuenta.&nbsp;💛</p>
+    <!-- The same Stripe link with the amount, in cents, already typed in. -->
+    <div class="importes">
+      <a class="boton" href="https://buy.stripe.com/eVq6oJ9h5flP6o92gAcZa00?locale=es&amp;client_reference_id=guia&amp;__prefilled_amount=300" rel="noopener" data-importe="3">3&nbsp;€</a>
+      <a class="boton" href="https://buy.stripe.com/eVq6oJ9h5flP6o92gAcZa00?locale=es&amp;client_reference_id=guia&amp;__prefilled_amount=500" rel="noopener" data-importe="5">5&nbsp;€</a>
+      <a class="boton" href="https://buy.stripe.com/eVq6oJ9h5flP6o92gAcZa00?locale=es&amp;client_reference_id=guia&amp;__prefilled_amount=1000" rel="noopener" data-importe="10">10&nbsp;€</a>
     </div>
-    <p class="nota">Tú eliges cuánto. Y si no puedes, no pasa nada: la guía es tuya igual.</p>
+    <form class="otra" action="https://buy.stripe.com/eVq6oJ9h5flP6o92gAcZa00" method="get">
+      <label for="cantidad">Otra cantidad (€)</label>
+      <div><input id="cantidad" type="number" inputmode="numeric" min="3" max="999" step="1" placeholder="20" required><button class="boton claro">Apoyar</button></div>
+    </form>
+    <p class="nota">Y si no puedes, no pasa nada: tu apoyo en el canal ya me ayuda muchísimo. ¡Gracias por estar ahí!&nbsp;😊</p>
   </div>
 </section>
 
@@ -373,7 +393,18 @@
 
   document.getElementById('guardar').addEventListener('click', () => { evento('pdf'); print(); });
   document.querySelector('[data-ev="ig"]').addEventListener('click', () => evento('ig'));
-  document.querySelector('[data-ev="cafe"]').addEventListener('click', () => evento('cafe'));
+  for (const a of document.querySelectorAll('[data-importe]')) a.addEventListener('click', () => evento('cafe', a.dataset.importe));
+  // The browser has already checked the field against its minimum when this runs.
+  const otra = document.querySelector('.otra');
+  otra.addEventListener('submit', (e) => {
+    e.preventDefault();
+    evento('cafe', 'otra');
+    const enlace = new URL(otra.action);
+    enlace.searchParams.set('locale', 'es');
+    enlace.searchParams.set('client_reference_id', 'guia');
+    enlace.searchParams.set('__prefilled_amount', String(Math.round(Number(otra.elements.cantidad.value) * 100)));
+    location.href = enlace.href;
+  });
 </script>
 </body>
 </html>
