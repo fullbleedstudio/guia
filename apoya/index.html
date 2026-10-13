@@ -88,8 +88,10 @@
   .apoyo .otra .boton { flex: none; width: auto; margin-top: 0; }
   /* Pointer over a button: it turns the brand yellow, ink on top. */
   @media (hover: hover) {
-    .importes .boton, .otra .boton { transition: background-color 0.12s, color 0.12s; }
-    .importes .boton:hover, .otra .boton:hover { background: var(--y); color: var(--k); }
+    .boton { transition: background-color 0.12s, color 0.12s; }
+    .boton:not([disabled]):hover { background: var(--y); color: var(--k); }
+    .redes a { transition: background-color 0.12s; }
+    .redes a:hover { background: var(--y); }
   }
   /* Two pages in one file: the ask, and the thanks a payment comes back to. */
   .si-ok { display: none; }

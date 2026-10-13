@@ -163,8 +163,8 @@
   .apoyo .otra .boton { flex: none; width: auto; }
   /* Pointer over a button: it turns the brand yellow, ink on top. */
   @media (hover: hover) {
-    .importes .boton, .otra .boton { transition: background-color 0.12s, color 0.12s; }
-    .importes .boton:hover, .otra .boton:hover { background: var(--y); color: var(--k); }
+    .boton { transition: background-color 0.12s, color 0.12s; }
+    .boton:not([disabled]):hover { background: var(--y); color: var(--k); }
   }
   .apoyo .qc { background: var(--y); padding: 0 0.2em; font-weight: 700; white-space: nowrap; }
   .botones { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
