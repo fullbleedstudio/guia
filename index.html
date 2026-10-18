@@ -83,6 +83,10 @@
     .boton:not([disabled]):hover { background: var(--y); color: var(--k); }
   }
   .alta .nota { margin-top: 12px; font-size: 18px; line-height: 1.25; }
+  /* Consent to other projects: its own box, unticked, under the address. */
+  .alta label.otros { display: flex; align-items: flex-start; gap: 10px; margin: 2px 0 4px; font: 600 17px/1.3 var(--texto); text-transform: none; cursor: pointer; }
+  .alta label.otros input { flex: none; width: 24px; height: 24px; margin: 0; accent-color: var(--k); cursor: pointer; }
+  .alta label.otros i { font-style: normal; opacity: 0.7; }
   .alta .fallo { margin-top: 10px; font-weight: 700; }
   .trampa { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
   .hecho h2 { font: 400 34px/1.05 var(--anton); text-transform: uppercase; }
@@ -158,10 +162,11 @@
       </div>
       <input name="de" type="hidden" value="">
       <input name="ts" type="hidden" value="">
+      <label class="otros"><input type="checkbox" name="otros" value="si"><span>Avísame también de mis otros proyectos, como el curso para hacer vídeos como estos. <i>Opcional.</i></span></label>
       <button class="boton" type="submit">Mándamela</button>
     </form>
     <p class="fallo" role="alert" hidden>No se ha podido guardar. Revisa el correo y prueba otra vez.</p>
-    <p class="nota">Es gratis y te llega al momento. También te escribiré cuando cambie algo que te afecte. Te das de baja cuando quieras.</p>
+    <p class="nota">Es gratis y te llega al momento. También te escribiré cuando cambie algo que te afecte y, solo si marcas la casilla, de mis otros proyectos. Te das de baja cuando quieras.</p>
   </div>
   <div class="alta card hecho" data-hecho role="status" hidden></div>
 </header>
