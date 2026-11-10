@@ -7,10 +7,9 @@
 <link rel="icon" type="image/png" href="/assets/que-cambia-icono.png">
 <link rel="apple-touch-icon" href="/assets/que-cambia-icono.png">
 <meta name="theme-color" content="#FFD400">
-<meta name="robots" content="noindex">
 <title>Guía para votar el 29-N · ¿Qué Cambia?</title>
 <!-- Same cookieless analytics as the rest of the site; data-domains keeps previews out of the numbers. -->
-<script defer src="https://cloud.umami.is/script.js" data-website-id="1facdecd-7f13-4a94-9b76-18a5593acb29" data-domains="fullbleedstudio.com,www.fullbleedstudio.com,guia.fullbleedstudio.com"></script>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="1facdecd-7f13-4a94-9b76-18a5593acb29" data-domains="fullbleedstudio.com,www.fullbleedstudio.com,quecambia.es,guia.fullbleedstudio.com"></script>
 <style>
   /* The channel's own look, not the studio's: yellow ground, ink, white cards
      with a hard shadow, Anton titles. Self-contained like /que.cambia. */
@@ -43,7 +42,7 @@
   .anton { font-family: var(--anton); font-weight: 400; text-transform: uppercase; line-height: 1.04; letter-spacing: 0.005em; }
   .mono { font: 500 13px/1.3 var(--mono); letter-spacing: 0; }
   /* The caption highlight from the videos: the word that matters, ink on yellow reversed. */
-  .hl { background: var(--k); color: var(--y); padding: 0 0.22em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .hl { background: linear-gradient(var(--k), var(--k)) no-repeat 0 0 / 100% 100%; color: var(--y); padding: 0 0.22em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
   h1 .hl { display: inline-block; white-space: nowrap; line-height: 1; padding: 0.06em 0.14em 0.02em; margin-top: 0.08em; }
   .card { background: var(--w); border: 4px solid var(--k); box-shadow: 6px 7px 0 var(--k); }
 
@@ -74,8 +73,20 @@
   .portada .sub { font-size: 25px; line-height: 1.2; margin-top: 18px; max-width: 24ch; }
   .portada .fila { margin-top: 4px; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; padding-right: 8px; }
   .quique { flex: none; width: 96px; height: auto; margin-bottom: -4px; }
-  .dentro { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
-  .dentro li { background: var(--w); border: 3px solid var(--k); padding: 3px 10px 4px; font-weight: 700; font-size: 19px; }
+  /* The contents are buttons: each jumps to its section. Same hard-shadow card as the rest of the page,
+     and it presses down into its shadow, so it reads as something to tap, not a list of tags. */
+  .dentro { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 12px; margin-top: 26px; }
+  .dentro a { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 12px; min-height: 60px; padding: 0 12px 0 0; background: var(--w); border: 3px solid var(--k); box-shadow: 5px 5px 0 var(--k); text-decoration: none; font: 700 23px/1.02 var(--texto); transition: transform 0.1s, box-shadow 0.1s, background-color 0.12s; }
+  .dentro .num { align-self: stretch; display: flex; align-items: center; justify-content: center; width: 44px; background: var(--k); color: var(--y); font: 400 24px/1 var(--anton); }
+  .dentro a:active { transform: translate(5px, 5px); box-shadow: 0 0 0 var(--k); }
+  .dentro a:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  @media (max-width: 420px) { .dentro { gap: 10px; } .dentro a { font-size: 21px; gap: 10px; } .dentro .num { width: 38px; font-size: 22px; } }
+  @media (max-width: 359px) { .dentro a { font-size: 19px; gap: 8px; } .dentro .num { width: 32px; } }
+  @media (hover: hover) {
+    .dentro a:hover { background: var(--y); transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--k); }
+  }
+  @media (min-width: 640px) { .dentro { grid-template-columns: repeat(3, minmax(0, 1fr)); } .dentro a:last-child:nth-child(odd) { grid-column: auto; } }
+  @media print { .dentro { display: none; } }
 
   section { padding-block: 34px; scroll-margin-top: 56px; }
   .bloque { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
@@ -141,6 +152,49 @@
   .bulos p { margin-top: 10px; font-size: 20px; }
   .sello { float: right; margin: -4px -4px 6px 12px; border: 4px solid var(--k); padding: 3px 9px 2px; font: 400 23px/1 var(--anton); text-transform: uppercase; transform: rotate(7deg); background: var(--y); }
 
+  /* The programmes: one identical card per party, in size order, so no party reads as singled out.
+     A logo box of fixed height keeps wide and square logos at a readable size without one dwarfing another. */
+  .programas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .programas .prog { min-width: 0; overflow-wrap: anywhere; }
+  @media (max-width: 359px) { .programas { gap: 9px; } .programas .prog { padding-inline: 9px; } .programas .leer { font-size: 16px; } }
+  .programas li { display: flex; }
+  .programas .prog { display: flex; flex-direction: column; width: 100%; padding: 12px 12px 12px; text-decoration: none; }
+  .programas .logo { display: flex; align-items: center; justify-content: center; height: 84px; margin-bottom: 10px; }
+  .programas .logo img { max-width: 100%; max-height: 84px; width: auto; height: auto; }
+  .programas h3 { font: 700 19px/1.15 var(--texto); text-transform: uppercase; }
+  .programas .donde { margin-top: 4px; font-size: 16px; line-height: 1.2; }
+  .programas .leer, .programas .aun { margin-top: auto; padding-top: 10px; }
+  .programas .leer { display: block; margin-top: auto; padding: 9px 6px 8px; background: var(--k); color: var(--y); text-align: center; font: 400 18px/1 var(--anton); text-transform: uppercase; letter-spacing: 0.02em; }
+  .programas .prog > .leer { margin-top: auto; }
+  .programas small { display: block; margin-top: 6px; text-align: center; font: 500 11.5px/1.3 var(--mono); }
+  .programas .aun { display: block; font: 500 12.5px/1.3 var(--mono); text-transform: uppercase; text-align: center; border: 3px dashed var(--k); padding: 8px 4px 7px; }
+  @media (hover: hover) { .programas a.prog:hover .leer { background: var(--y); color: var(--k); } }
+  @media (min-width: 640px) { .programas { grid-template-columns: repeat(3, 1fr); } }
+  .programas .aviso { display: block; margin-top: auto; padding-top: 10px; font: 500 11.5px/1.3 var(--mono); text-transform: uppercase; text-align: center; }
+  .programas .aviso + .leer { margin-top: 6px; }
+  .programas .leer.viejo { background: var(--w); color: var(--k); border: 3px solid var(--k); padding-block: 6px 5px; }
+  .programas + .grupo { margin-top: 30px; }
+  .grupo { margin-bottom: 12px; font: 400 24px/1.05 var(--anton); text-transform: uppercase; }
+  .programas .sin-logo { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; border: 3px solid var(--k); padding: 6px; text-align: center; font: 400 20px/1.05 var(--anton); text-transform: uppercase; }
+  /* How the list is made: the order, the daily check and a way to write in, in plain sight. */
+  .transparencia { margin-top: 26px; padding: 18px 16px 18px; }
+  .transparencia .etiqueta { display: inline-block; margin-bottom: 12px; background: var(--k); color: var(--y); padding: 3px 8px 2px; font: 500 12.5px/1.3 var(--mono); text-transform: uppercase; }
+  .transparencia ul { display: grid; gap: 10px; }
+  .transparencia li { font-size: 19px; line-height: 1.25; padding-left: 14px; border-left: 4px solid var(--y); }
+  .transparencia .escribe { margin-top: 16px; font-size: 21px; font-weight: 700; }
+  .transparencia .boton { margin-top: 12px; width: 100%; font-size: 19px; text-transform: none; letter-spacing: 0; }
+  @media print { .transparencia .boton { display: none; } }
+  .mono-fecha { margin-bottom: 14px; font: 500 12.5px/1.4 var(--mono); }
+
+  /* Past dates stay (the guide is also a record of how it went) but step back: faded, struck, stamped. */
+  .fechas li.pasada { opacity: 0.5; box-shadow: none; }
+  .fechas li.pasada h3 { text-decoration: line-through; text-decoration-thickness: 3px; }
+  .fechas li.pasada .dia, .fechas li.pasada .que { background: transparent; color: var(--k); }
+  .fechas li.pasada .dia { border-right: 3px solid var(--k); }
+  .estado { display: inline-block; margin-bottom: 6px; padding: 2px 7px 1px; border: 2.5px solid var(--k); font: 500 11.5px/1.3 var(--mono); text-transform: uppercase; }
+  .fechas li.proxima .estado, .fechas li.ahora .estado { background: var(--k); color: var(--y); }
+  .plazo.pasado { background: transparent; color: var(--k); border: 2.5px solid var(--k); text-decoration: line-through; }
+
   .cierre { padding-block: 40px 30px; }
   .apoyo { padding-block: 88px 0; }
   .cierre .card, .apoyo .card { padding: 20px 18px 22px; }
@@ -202,6 +256,107 @@
   .otra-guia h2 .hl { display: inline-block; white-space: nowrap; line-height: 1; padding: 0.06em 0.14em 0.02em; }
   .otra-guia .boton { margin-top: 16px; }
   @media print { .otra-guia { display: none !important; } }
+
+  /* ===== Premium pass (10 Nov 2026): sections alternate yellow, ink and paper so the page has a rhythm,
+     Quique shows up in every section doing something different, and things move a little as they arrive.
+     Every hidden-before-reveal rule lives under html.anim, which the script sets only when it runs and the
+     visitor has not asked for less motion: without it the page is complete and still. ===== */
+  :root { --p: #FFFCF2; }
+  body { background-image: none; }
+  /* clip, not hidden: nothing that animates in from the side can ever make the page scroll sideways */
+  section.banda { padding-block: 104px 70px; overflow-x: clip; }
+  @media (min-width: 640px) { .qq { width: 132px; } }
+  .tema-amarillo { background: var(--y); }
+  .tema-papel { background: var(--p); }
+  .tema-negro { background: var(--k); color: var(--w); }
+  .tema-negro .card { color: var(--k); border-color: var(--y); box-shadow: 6px 7px 0 var(--y); }
+  .tema-negro .fechas li.pasada { border-color: #8A8472; }
+  .tema-negro .bloque .n { background: var(--y); color: var(--k); }
+  .tema-negro .hl { background-image: linear-gradient(var(--y), var(--y)); color: var(--k); }
+  .tema-negro .apunte { border-color: var(--w); }
+  .tema-negro .apunte a { color: var(--y); }
+  .tema-negro .ojo { background: var(--y); color: var(--k); }
+  .tema-negro .ojo b { color: var(--k); }
+  .tema-negro .ojo .senal { background: var(--k); color: var(--y); }
+  .tema-negro .estado { border-color: var(--k); }
+  .tema-papel .card, .tema-amarillo .card { border-width: 3px; }
+
+  .bloque { position: relative; }
+  /* Quique peeks over the top edge of his section, so the title keeps the full width on a phone. */
+  .qq { position: absolute; right: 2px; bottom: calc(100% + 4px); width: 112px; height: auto; overflow: visible; transform-origin: 50% 100%; }
+  .tema-negro .qq { filter: drop-shadow(3px 0 0 #fff) drop-shadow(-3px 0 0 #fff) drop-shadow(0 3px 0 #fff) drop-shadow(0 -3px 0 #fff); }
+  .qq .ojos { transform-box: fill-box; transform-origin: center; animation: parpadeo 5.5s infinite; }
+  .qq .saluda { transform-box: view-box; transform-origin: 285px 300px; animation: saluda 1.6s ease-in-out infinite; }
+  .qq .prop { animation: flota 3.2s ease-in-out infinite; }
+  @keyframes parpadeo { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(0.1); } }
+  @keyframes saluda { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(-14deg); } }
+  @keyframes flota { 0%, 100% { translate: 0 0; } 50% { translate: 0 -8px; } }
+  @keyframes asoma { from { transform: translateY(70%) rotate(-10deg); opacity: 0; } 60% { opacity: 1; } to { transform: none; opacity: 1; } }
+  @keyframes respira { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+
+  /* Arrivals: each kind of content has its own small entrance, so the page never repeats one trick.
+     Only the waiting state is styled (:not(.visto)), so once shown every element keeps its own rules. */
+  html.anim .a-titulo .n { transition: transform 0.7s cubic-bezier(.3,1.4,.5,1), opacity 0.4s; }
+  html.anim .a-titulo:not(.visto) .n { transform: rotate(-16deg) scale(0.6); opacity: 0; }
+  html.anim .a-titulo h2 { transition: clip-path 0.9s cubic-bezier(.7,0,.2,1) 0.12s; clip-path: inset(-25% -6% -25% 0); }
+  html.anim .a-titulo:not(.visto) h2 { clip-path: inset(-25% 100% -25% 0); }
+  html.anim .a-entra { transition: opacity 0.8s ease, filter 0.8s ease; }
+  html.anim .a-entra:not(.visto) { opacity: 0; filter: blur(6px); }
+  html.anim .a-entra .hl { transition: background-size 0.75s cubic-bezier(.7,0,.2,1) 0.45s, color 0.2s 0.7s; }
+  html.anim .a-entra:not(.visto) .hl { background-size: 0% 100%; color: inherit; }
+  html.anim .a-izq { transition: opacity 0.6s ease calc(var(--i, 0) * 70ms), transform 0.7s cubic-bezier(.2,.8,.2,1) calc(var(--i, 0) * 70ms); }
+  html.anim .a-izq:not(.visto) { opacity: 0; transform: translateX(-22px); }
+  html.anim .a-pasos { transform-origin: 50% 0; transition: transform 0.8s cubic-bezier(.2,.8,.2,1) calc(var(--i, 0) * 130ms), opacity 0.5s ease calc(var(--i, 0) * 130ms); }
+  html.anim .a-pasos:not(.visto) { opacity: 0; transform: translateY(-12px) scaleY(0.94); }
+  html.anim .a-escala { transition: opacity 0.6s ease calc(var(--i, 0) * 90ms), transform 0.7s cubic-bezier(.2,.8,.2,1) calc(var(--i, 0) * 90ms); }
+  html.anim .a-escala:not(.visto) { opacity: 0; transform: scale(0.95); }
+  html.anim .a-check { transition: opacity 0.45s ease calc(var(--i, 0) * 110ms); }
+  html.anim .a-check:not(.visto) { opacity: 0; }
+  html.anim .a-check::before { transition: transform 0.45s cubic-bezier(.3,1.6,.5,1) calc(var(--i, 0) * 110ms + 0.15s); }
+  html.anim .a-check:not(.visto)::before { transform: scale(0); }
+  html.anim .a-suave { transition: opacity 0.7s ease, transform 0.8s cubic-bezier(.2,.8,.2,1); }
+  html.anim .a-suave:not(.visto) { opacity: 0; transform: translateY(16px); }
+  html.anim .a-ojo { transition: opacity 0.5s ease, transform 0.7s cubic-bezier(.2,.8,.2,1); }
+  html.anim .a-ojo:not(.visto) { opacity: 0; transform: translateX(-26px); }
+  html.anim .a-ojo .senal { transition: transform 0.7s cubic-bezier(.3,1.5,.5,1) 0.25s; }
+  html.anim .a-ojo:not(.visto) .senal { transform: rotate(-120deg) scale(0.4); }
+  html.anim .a-bulo { transition: opacity 0.6s ease calc(var(--i, 0) * 120ms), transform 0.7s cubic-bezier(.2,.8,.2,1) calc(var(--i, 0) * 120ms); }
+  html.anim .a-bulo:not(.visto) { opacity: 0; transform: translateY(14px); }
+  html.anim .a-prog { transition: opacity 0.45s ease calc(var(--i, 0) * 45ms), transform 0.5s cubic-bezier(.2,.8,.2,1) calc(var(--i, 0) * 45ms); }
+  html.anim .a-prog:not(.visto) { opacity: 0; transform: translateY(10px); }
+  html.anim .qq { opacity: 0; }
+  html.anim .visto .qq { animation: asoma 0.75s cubic-bezier(.3,1.5,.5,1) 0.35s both, respira 3.4s ease-in-out 1.3s infinite; }
+  html.anim .bulos .sello { transform: rotate(7deg) scale(2.2); opacity: 0; transition: transform 0.4s cubic-bezier(.3,1.6,.5,1), opacity 0.2s; }
+  html.anim .bulos li.visto .sello { transform: rotate(7deg) scale(1); opacity: 1; transition-delay: 0.25s; }
+  html.anim .barra i { transform: scaleX(0); transform-origin: left; transition: transform 1s cubic-bezier(.2,.8,.2,1) 0.2s; }
+  html.anim .pesa.visto .barra i { transform: none; }
+  .fechas li.proxima .estado, .fechas li.ahora .estado { animation: late 1.8s ease-in-out infinite; }
+  @keyframes late { 0%, 100% { box-shadow: 0 0 0 0 rgba(255,212,0,0.7); } 50% { box-shadow: 0 0 0 7px rgba(255,212,0,0); } }
+
+  /* The countdown on the cover. */
+  .faltan { display: inline-flex; align-items: stretch; margin-top: 22px; border: 3px solid var(--k); box-shadow: 5px 5px 0 var(--k); background: var(--w); }
+  .faltan span { display: flex; align-items: center; padding: 0 10px; font: 500 12px/1.2 var(--mono); text-transform: uppercase; }
+  .faltan span:first-child { background: var(--k); color: var(--y); }
+  .faltan b { font: 400 44px/1 var(--anton); padding: 4px 4px 2px 10px; }
+
+  /* The cover: no dots, and the logo wordmark breathes a little. */
+  .portada { padding-block: 26px 56px; }
+  .portada .quique { animation: respira 3.4s ease-in-out infinite; transform-origin: 50% 100%; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .qq .ojos, .qq .saluda, .qq .prop, .portada .quique, .fechas li .estado { animation: none !important; }
+  }
+  @media print {
+    section.banda { padding-block: 18px; background: none !important; color: var(--k) !important; }
+    .qq { display: none; }
+    html.anim :is(.a-titulo .n, .a-titulo h2, .a-entra, .a-izq, .a-pasos, .a-escala, .a-check, .a-suave, .a-ojo, .a-ojo .senal, .a-bulo, .a-prog), html.anim .a-check::before { opacity: 1 !important; transform: none !important; filter: none !important; clip-path: none !important; }
+    html.anim .a-titulo .n { transform: rotate(-3deg) !important; }
+    html.anim .a-ojo .senal { transform: rotate(4deg) !important; }
+    html.anim .hl { background-size: 100% 100% !important; }
+    html.anim .bulos .sello { opacity: 1 !important; transform: rotate(7deg) !important; }
+    html.anim .barra i { transform: none !important; }
+    .faltan { display: none !important; }
+  }
 </style>
 </head>
 <body>
@@ -217,79 +372,89 @@
     <li><a href="#blanco" aria-label="6, en blanco, nulo o no ir">6</a></li>
     <li><a href="#cuenta" aria-label="7, cómo se cuenta">7</a></li>
     <li><a href="#bulos" aria-label="8, verdadero o falso">8</a></li>
+    <li><a href="#programas" aria-label="9, los programas">9</a></li>
   </ol>
 </nav>
 
 <header class="portada ancho" id="inicio">
-  <div class="marca"><img src="/assets/que-cambia-logo.png" alt="¿Qué Cambia?" width="484" height="440"><p class="mono">@que.cambia<br>Datos a 11 de octubre de 2026</p></div>
+  <div class="marca"><img src="/assets/que-cambia-logo.png" alt="¿Qué Cambia?" width="484" height="440"><p class="mono">@que.cambia<br>Actualizada el 10 de noviembre de 2026</p></div>
   <div class="fila">
     <div class="fecha card" aria-hidden="true"><b>Noviembre</b><span>29</span></div>
     <svg class="quique" viewBox="40 -20 470 625" aria-hidden="true"><g transform="rotate(-4 250 560)"><g transform="translate(0 0)"><path d="M150,170 C150,60 350,60 350,170 C350,255 250,245 250,345" fill="none" stroke="#111111" stroke-width="100" stroke-linejoin="round"/><circle cx="206" cy="95" r="24" fill="#FFFFFF"/><circle cx="211" cy="91" r="10.1" fill="#111111"/><circle cx="294" cy="95" r="24" fill="#FFFFFF"/><circle cx="299" cy="91" r="10.1" fill="#111111"/><line x1="184" y1="7" x2="228" y2="21" stroke="#111111" stroke-width="11" stroke-linecap="round"/><line x1="272" y1="21" x2="316" y2="7" stroke="#111111" stroke-width="11" stroke-linecap="round"/><path d="M215,300 Q145.0,340.5 95,345" fill="none" stroke="#111111" stroke-width="15" stroke-linecap="round"/><path d="M285,300 Q387.5,285.5 470,235" fill="none" stroke="#111111" stroke-width="15" stroke-linecap="round"/><circle cx="95" cy="345" r="15" fill="#111111"/><circle cx="470" cy="235" r="15" fill="#111111"/></g><circle cx="250" cy="455" r="52" fill="#111111"/><path d="M232,498 L222,572 M268,498 L278,572" stroke="#111111" stroke-width="15" stroke-linecap="round"/><ellipse cx="208" cy="578" rx="30" ry="13" fill="#111111"/><ellipse cx="292" cy="578" rx="30" ry="13" fill="#111111"/></g></svg>
   </div>
   <h1 class="anton">Guía para votar <span class="hl">sin liarte</span></h1>
+  <p class="faltan" hidden><span>Faltan</span><b data-faltan>19</b><span>días para votar</span></p>
   <p class="sub">Elecciones generales del 29 de noviembre. Lo que tienes que saber, en dos minutos y sin bandos.</p>
-  <ul class="dentro" aria-label="Qué hay dentro">
-    <li>Fechas</li><li>Voto por correo</li><li>Desde el extranjero</li><li>Mesa electoral</li><li>El día 29</li><li>Blanco, nulo o no ir</li><li>Cómo se cuenta</li><li>Bulos</li>
-  </ul>
+  <nav class="dentro" aria-label="Qué hay dentro">
+    <a href="#fechas" data-ev="indice" data-dato="fechas"><span class="num">1</span><span class="txt">Fechas</span></a>
+    <a href="#correo" data-ev="indice" data-dato="correo"><span class="num">2</span><span class="txt">Voto por correo</span></a>
+    <a href="#fuera" data-ev="indice" data-dato="fuera"><span class="num">3</span><span class="txt">Desde el extranjero</span></a>
+    <a href="#mesa" data-ev="indice" data-dato="mesa"><span class="num">4</span><span class="txt">Mesa electoral</span></a>
+    <a href="#dia" data-ev="indice" data-dato="dia"><span class="num">5</span><span class="txt">El día 29</span></a>
+    <a href="#blanco" data-ev="indice" data-dato="blanco"><span class="num">6</span><span class="txt">Blanco, nulo o no ir</span></a>
+    <a href="#cuenta" data-ev="indice" data-dato="cuenta"><span class="num">7</span><span class="txt">Cómo se cuenta</span></a>
+    <a href="#bulos" data-ev="indice" data-dato="bulos"><span class="num">8</span><span class="txt">Bulos</span></a>
+    <a href="#programas" data-ev="indice" data-dato="programas"><span class="num">9</span><span class="txt">Los programas</span></a>
+  </nav>
 </header>
 
 <main>
 
-<section id="fechas" class="ancho">
-  <div class="bloque"><span class="n" aria-hidden="true">1</span><h2 class="anton">Las fechas</h2></div>
+<section id="fechas" class="banda tema-negro"><div class="ancho">
+  <div class="bloque"><span class="n" aria-hidden="true">1</span><h2 class="anton">Las fechas</h2><svg class="qq qq-fechas" viewBox="-60 -40 740 660" aria-hidden="true" focusable="false"><g transform="rotate(2 250 560)"><g class="cuerpo"><path d="M150,170 C150,60 350,60 350,170 C350,255 250,245 250,345" fill="none" stroke="#111111" stroke-width="100" stroke-linejoin="round"/><g class="ojos"><circle cx="206" cy="95" r="24" fill="#FFFFFF"/><circle cx="214" cy="95" r="10.1" fill="#111111"/><circle cx="294" cy="95" r="24" fill="#FFFFFF"/><circle cx="302" cy="95" r="10.1" fill="#111111"/></g><line x1="184" y1="22" x2="228" y2="22" stroke="#111111" stroke-width="11" stroke-linecap="round"/><line x1="272" y1="22" x2="316" y2="22" stroke="#111111" stroke-width="11" stroke-linecap="round"/><path d="M215,300 Q167.5,354.0 140,372" fill="none" stroke="#111111" stroke-width="15" stroke-linecap="round"/><circle cx="140" cy="372" r="15" fill="#111111"/><path d="M285,300 Q363.5,288.0 422,240.0" fill="none" stroke="#111111" stroke-width="15" stroke-linecap="round"/><circle cx="422" cy="240.0" r="15" fill="#111111"/></g><circle cx="250" cy="455" r="52" fill="#111111"/><path d="M232,498 L222,572 M268,498 L278,572" stroke="#111111" stroke-width="15" stroke-linecap="round"/><ellipse cx="208" cy="578" rx="30" ry="13" fill="#111111"/><ellipse cx="292" cy="578" rx="30" ry="13" fill="#111111"/></g><g class="prop" transform="translate(440 150) rotate(-4)"><rect x="6" y="8" width="190" height="180" fill="#111111"/><rect width="190" height="180" fill="#FFFFFF" stroke="#111111" stroke-width="6"/><rect width="190" height="54" fill="#111111"/><text x="95" y="40" font-family="Anton,Impact,sans-serif" font-size="30" text-anchor="middle" fill="#FFD400">NOVIEMBRE</text><text x="95" y="150" font-family="Anton,Impact,sans-serif" font-size="96" text-anchor="middle" fill="#111111">29</text></g></svg></div>
   <p class="entra">Siete fechas. Si se te pasa una, puedes quedarte <span class="hl">sin votar</span>.</p>
   <ol class="fechas">
-    <li class="card"><div class="dia"><small>Octubre</small><b>12 al 19</b></div><div class="que"><h3>Mira el censo</h3><p>Comprueba dónde votas y pide que lo corrijan si está mal. En la web del INE o en tu ayuntamiento. Si te has mudado, es tu semana.</p></div></li>
-    <li class="card"><div class="dia"><small>Oct. · Nov.</small><b>31 al 4</b></div><div class="que"><h3>Sorteo de las mesas</h3><p>Si te toca, te llega una carta a casa.</p></div></li>
-    <li class="card"><div class="dia"><small>Noviembre</small><b>13 al 27</b></div><div class="que"><h3>Campaña</h3><p>Dos semanas de mítines, carteles y debates.</p></div></li>
-    <li class="card"><div class="dia"><small>Hasta el</small><b>19 nov.</b></div><div class="que"><h3>Pedir el voto por correo</h3><p>Último día. Después ya no se puede.</p></div></li>
-    <li class="card"><div class="dia"><small>Hasta el</small><b>25 nov.</b></div><div class="que"><h3>Entregar el voto por correo</h3><p>Último día para llevar tu sobre a Correos.</p></div></li>
-    <li class="card"><div class="dia"><small>Noviembre</small><b>28</b></div><div class="que"><h3>Jornada de reflexión</h3><p>Nadie puede pedirte el voto.</p></div></li>
-    <li class="card hoy"><div class="dia"><small>Noviembre</small><b>29</b></div><div class="que"><h3>A votar</h3><p>De 9 de la mañana a 8 de la tarde.</p></div></li>
+    <li data-hasta="2026-10-19" class="card"><div class="dia"><small>Octubre</small><b>12 al 19</b></div><div class="que"><h3>Mira el censo</h3><p>Comprueba dónde votas y pide que lo corrijan si está mal. En la web del INE o en tu ayuntamiento. Si te has mudado, es tu semana.</p></div></li>
+    <li data-hasta="2026-11-04" data-desde="2026-10-31" class="card"><div class="dia"><small>Oct. · Nov.</small><b>31 al 4</b></div><div class="que"><h3>Sorteo de las mesas</h3><p>Si te toca, te llega una carta a casa.</p></div></li>
+    <li data-hasta="2026-11-27" data-desde="2026-11-13" class="card"><div class="dia"><small>Noviembre</small><b>13 al 27</b></div><div class="que"><h3>Campaña</h3><p>Dos semanas de mítines, carteles y debates.</p></div></li>
+    <li data-hasta="2026-11-19" class="card"><div class="dia"><small>Hasta el</small><b>19 nov.</b></div><div class="que"><h3>Pedir el voto por correo</h3><p>Último día. Después ya no se puede.</p></div></li>
+    <li data-hasta="2026-11-25" class="card"><div class="dia"><small>Hasta el</small><b>25 nov.</b></div><div class="que"><h3>Entregar el voto por correo</h3><p>Último día para llevar tu sobre a Correos.</p></div></li>
+    <li data-hasta="2026-11-28" data-desde="2026-11-28" class="card"><div class="dia"><small>Noviembre</small><b>28</b></div><div class="que"><h3>Jornada de reflexión</h3><p>Nadie puede pedirte el voto.</p></div></li>
+    <li data-hasta="2026-11-29" data-desde="2026-11-29" class="card hoy"><div class="dia"><small>Noviembre</small><b>29</b></div><div class="que"><h3>A votar</h3><p>De 9 de la mañana a 8 de la tarde.</p></div></li>
   </ol>
   <p class="apunte"><b>¿Vives fuera de España?</b> Tus fechas son otras. Están en el <a href="#fuera">apartado 3</a>.</p>
-</section>
+</div></section>
 
-<section id="correo" class="ancho">
-  <div class="bloque"><span class="n" aria-hidden="true">2</span><h2 class="anton">Voto por correo</h2></div>
+<section id="correo" class="banda tema-amarillo"><div class="ancho">
+  <div class="bloque"><span class="n" aria-hidden="true">2</span><h2 class="anton">Voto por correo</h2><svg class="qq qq-correo" viewBox="-60 -40 740 660" aria-hidden="true" focusable="false"><g transform="rotate(0 250 560)"><g class="cuerpo"><path d="M150,170 C150,60 350,60 350,170 C350,255 250,245 250,345" fill="none" stroke="#111111" stroke-width="100" stroke-linejoin="round"/><g class="ojos"><circle cx="206" cy="95" r="24" fill="#FFFFFF"/><circle cx="206" cy="105" r="10.1" fill="#111111"/><circle cx="294" cy="95" r="24" fill="#FFFFFF"/><circle cx="294" cy="105" r="10.1" fill="#111111"/></g><line x1="184" y1="22" x2="228" y2="22" stroke="#111111" stroke-width="11" stroke-linecap="round"/><line x1="272" y1="22" x2="316" y2="22" stroke="#111111" stroke-width="11" stroke-linecap="round"/><path d="M215,300 Q169.5,371.5 144,407.0" fill="none" stroke="#111111" stroke-width="15" stroke-linecap="round"/><circle cx="144" cy="407.0" r="15" fill="#111111"/><path d="M285,300 Q330.5,371.5 356,407.0" fill="none" stroke="#111111" stroke-width="15" stroke-linecap="round"/><circle cx="356" cy="407.0" r="15" fill="#111111"/></g><circle cx="250" cy="455" r="52" fill="#111111"/><path d="M232,498 L222,572 M268,498 L278,572" stroke="#111111" stroke-width="15" stroke-linecap="round"/><ellipse cx="208" cy="578" rx="30" ry="13" fill="#111111"/><ellipse cx="292" cy="578" rx="30" ry="13" fill="#111111"/></g><g class="prop-c" transform="translate(140 330) rotate(0)"><rect x="6" y="8" width="220" height="140" fill="#111111"/><rect width="220" height="140" fill="#FFFFFF" stroke="#111111" stroke-width="6"/><path d="M0,0 L110,76 L220,0" fill="none" stroke="#111111" stroke-width="6"/></g><g class="manos"><circle cx="144" cy="407.0" r="17" fill="#111111"/><circle cx="356" cy="407.0" r="17" fill="#111111"/></g></svg></div>
   <p class="entra">Si el 29 no vas a estar, son <span class="hl">tres pasos</span>.</p>
   <ol class="pasos">
-    <li class="card"><div><h3>Pídelo</h3><p>En cualquier oficina de Correos, con tu DNI, pasaporte o carné de conducir. También por internet, con certificado digital.</p><span class="plazo">Hasta el 19 de noviembre</span></div></li>
-    <li class="card"><div><h3>Recíbelo</h3><p>Te llegan las papeletas a casa por correo certificado. Te identificas y firmas.</p><span class="plazo">Del 9 al 22 de noviembre</span></div></li>
-    <li class="card"><div><h3>Entrégalo</h3><p>Eliges papeleta, cierras el sobre y lo llevas a Correos. Tienes que enseñar el DNI.</p><span class="plazo">Hasta el 25 de noviembre</span></div></li>
+    <li class="card"><div><h3>Pídelo</h3><p>En cualquier oficina de Correos, con tu DNI, pasaporte o carné de conducir. También por internet, con certificado digital.</p><span class="plazo" data-hasta="2026-11-19">Hasta el 19 de noviembre</span></div></li>
+    <li class="card"><div><h3>Recíbelo</h3><p>Te llegan las papeletas a casa por correo certificado. Te identificas y firmas.</p><span class="plazo" data-hasta="2026-11-22">Del 9 al 22 de noviembre</span></div></li>
+    <li class="card"><div><h3>Entrégalo</h3><p>Eliges papeleta, cierras el sobre y lo llevas a Correos. Tienes que enseñar el DNI.</p><span class="plazo" data-hasta="2026-11-25">Hasta el 25 de noviembre</span></div></li>
   </ol>
   <div class="ojo"><span class="senal" aria-hidden="true">!</span><p><b>Y ojo:</b> si pides el voto por correo, el 29 ya no puedes votar en persona.</p></div>
   <p class="apunte"><b>¿Lo entrega otra persona por ti?</b> Tiene que llevar una autorización firmada por ti y una fotocopia de tu DNI.</p>
-</section>
+</div></section>
 
-<section id="fuera" class="ancho">
-  <div class="bloque"><span class="n" aria-hidden="true">3</span><h2 class="anton">Si vives fuera</h2></div>
+<section id="fuera" class="banda tema-papel"><div class="ancho">
+  <div class="bloque"><span class="n" aria-hidden="true">3</span><h2 class="anton">Si vives fuera</h2><svg class="qq qq-fuera" viewBox="-60 -40 740 660" aria-hidden="true" focusable="false"><g transform="rotate(0 250 560)"><g class="cuerpo"><path d="M150,170 C150,60 350,60 350,170 C350,255 250,245 250,345" fill="none" stroke="#111111" stroke-width="100" stroke-linejoin="round"/><g class="ojos"><circle cx="206" cy="95" r="24" fill="#FFFFFF"/><circle cx="212" cy="92" r="10.1" fill="#111111"/><circle cx="294" cy="95" r="24" fill="#FFFFFF"/><circle cx="300" cy="92" r="10.1" fill="#111111"/></g><line x1="184" y1="22" x2="228" y2="22" stroke="#111111" stroke-width="11" stroke-linecap="round"/><line x1="272" y1="22" x2="316" y2="22" stroke="#111111" stroke-width="11" stroke-linecap="round"/><path d="M215,300 Q157.5,358.0 120,380" fill="none" stroke="#111111" stroke-width="15" stroke-linecap="round"/><circle cx="120" cy="380" r="15" fill="#111111"/><g class="saluda"><path d="M285,300 Q362.5,223.0 420,110" fill="none" stroke="#111111" stroke-width="15" stroke-linecap="round"/><circle cx="420" cy="110" r="15" fill="#111111"/></g></g><circle cx="250" cy="455" r="52" fill="#111111"/><path d="M232,498 L222,572 M268,498 L278,572" stroke="#111111" stroke-width="15" stroke-linecap="round"/><ellipse cx="208" cy="578" rx="30" ry="13" fill="#111111"/><ellipse cx="292" cy="578" rx="30" ry="13" fill="#111111"/></g><g class="prop" transform="translate(-40 450) rotate(0)"><rect x="6" y="8" width="150" height="120" fill="#111111"/><rect width="150" height="120" fill="#FFD400" stroke="#111111" stroke-width="6"/><rect x="45" y="-28" width="60" height="30" fill="none" stroke="#111111" stroke-width="6"/><line x1="0" y1="45" x2="150" y2="45" stroke="#111111" stroke-width="6"/></g></svg></div>
   <p class="entra">Desde el extranjero también se vota. Cambia si <span class="hl">vives allí</span> o estás de paso.</p>
   <ul class="tres dos">
     <li class="card"><h3>Vives fuera</h3><p class="es">Y estás inscrito en tu consulado.</p><p class="si">No tienes que pedir nada: te mandan la documentación a casa, por correo certificado.</p><p class="si">Las papeletas también se descargan de la web oficial que viene en la hoja.</p></li>
-    <li class="card"><h3>Estás de paso</h3><p class="es">Unos meses fuera, por trabajo o estudios.</p><p class="no">No te llega nada solo: tienes que pedir el voto en el consulado.</p><span class="plazo">Hasta el 31 de octubre</span></li>
+    <li class="card"><h3>Estás de paso</h3><p class="es">Unos meses fuera, por trabajo o estudios.</p><p class="no">No te llega nada solo: tienes que pedir el voto en el consulado.</p><span class="plazo" data-hasta="2026-10-31">Hasta el 31 de octubre</span></li>
   </ul>
   <p class="entra" style="margin-top: 22px">Si vives fuera, eliges <span class="hl">cómo votar</span>.</p>
   <ol class="pasos sin">
-    <li class="card"><div><h3>En el consulado</h3><p>Llevas el sobre en persona y lo metes en la urna. Te identificas con pasaporte o DNI.</p><span class="plazo">Del 21 al 26 de noviembre</span></div></li>
-    <li class="card"><div><h3>Por correo</h3><p>Envías el sobre a tu consulado, certificado si puedes. Tiene que llegar el 27 como tarde.</p><span class="plazo">Hasta el 24 de noviembre</span></div></li>
+    <li class="card"><div><h3>En el consulado</h3><p>Llevas el sobre en persona y lo metes en la urna. Te identificas con pasaporte o DNI.</p><span class="plazo" data-hasta="2026-11-26">Del 21 al 26 de noviembre</span></div></li>
+    <li class="card"><div><h3>Por correo</h3><p>Envías el sobre a tu consulado, certificado si puedes. Tiene que llegar el 27 como tarde.</p><span class="plazo" data-hasta="2026-11-24">Hasta el 24 de noviembre</span></div></li>
   </ol>
   <div class="ojo"><span class="senal" aria-hidden="true">!</span><p><b>Y ojo:</b> estos plazos no se amplían. Si dudas, llama a tu consulado.</p></div>
-</section>
+</div></section>
 
-<section id="mesa" class="ancho">
-  <div class="bloque"><span class="n" aria-hidden="true">4</span><h2 class="anton">Si te toca mesa</h2></div>
+<section id="mesa" class="banda tema-negro"><div class="ancho">
+  <div class="bloque"><span class="n" aria-hidden="true">4</span><h2 class="anton">Si te toca mesa</h2><svg class="qq qq-mesa" viewBox="-60 -40 740 660" aria-hidden="true" focusable="false"><g transform="rotate(0 250 560)"><g class="cuerpo"><path d="M150,170 C150,60 350,60 350,170 C350,255 250,245 250,345" fill="none" stroke="#111111" stroke-width="100" stroke-linejoin="round"/><g class="ojos"><circle cx="206" cy="95" r="24" fill="#FFFFFF"/><circle cx="206" cy="105" r="10.1" fill="#111111"/><circle cx="294" cy="95" r="24" fill="#FFFFFF"/><circle cx="294" cy="105" r="10.1" fill="#111111"/></g><line x1="184" y1="22" x2="228" y2="22" stroke="#111111" stroke-width="11" stroke-linecap="round"/><line x1="272" y1="22" x2="316" y2="22" stroke="#111111" stroke-width="11" stroke-linecap="round"/><path d="M215,300 Q174.5,367.0 154,398.0" fill="none" stroke="#111111" stroke-width="15" stroke-linecap="round"/><circle cx="154" cy="398.0" r="15" fill="#111111"/><path d="M285,300 Q325.5,367.0 346,398.0" fill="none" stroke="#111111" stroke-width="15" stroke-linecap="round"/><circle cx="346" cy="398.0" r="15" fill="#111111"/></g><circle cx="250" cy="455" r="52" fill="#111111"/><path d="M232,498 L222,572 M268,498 L278,572" stroke="#111111" stroke-width="15" stroke-linecap="round"/><ellipse cx="208" cy="578" rx="30" ry="13" fill="#111111"/><ellipse cx="292" cy="578" rx="30" ry="13" fill="#111111"/></g><g class="prop-c" transform="translate(150 310) rotate(0)"><rect x="6" y="8" width="200" height="160" fill="#111111"/><rect width="200" height="160" fill="#FFFFFF" stroke="#111111" stroke-width="6"/><text x="100" y="62" font-family="Anton,Impact,sans-serif" font-size="38" text-anchor="middle" fill="#111111">MESA</text><text x="100" y="132" font-family="Anton,Impact,sans-serif" font-size="58" text-anchor="middle" fill="#111111">75 €</text></g><g class="manos"><circle cx="154" cy="398.0" r="17" fill="#111111"/><circle cx="346" cy="398.0" r="17" fill="#111111"/></g></svg></div>
   <p class="entra">Es un sorteo, y <span class="hl">es obligatorio</span>.</p>
   <ul class="lista card">
-    <li><p><b>Te avisan por carta.</b> El sorteo es del 31 de octubre al 4 de noviembre.</p></li>
+    <li><p><b>Te avisan por carta.</b> El sorteo fue del 31 de octubre al 4 de noviembre.</p></li>
     <li><p><b>¿No puedes ir?</b> Tienes 7 días desde que te llega la carta para explicarlo ante la Junta Electoral de tu zona. Ella decide.</p></li>
     <li><p><b>Titular o suplente.</b> Los suplentes también tienen que presentarse por si falta alguien.</p></li>
   </ul>
-  <div class="cifra card"><b>75 €</b><p>es lo que cobras si te quedas en la mesa. Los suplentes solo cobran si acaban sentándose.</p></div>
-</section>
+  <div class="cifra card"><b><span data-cuenta="75">75</span> €</b><p>es lo que cobras si te quedas en la mesa. Los suplentes solo cobran si acaban sentándose.</p></div>
+</div></section>
 
-<section id="dia" class="ancho">
-  <div class="bloque"><span class="n" aria-hidden="true">5</span><h2 class="anton">El día 29</h2></div>
+<section id="dia" class="banda tema-amarillo"><div class="ancho">
+  <div class="bloque"><span class="n" aria-hidden="true">5</span><h2 class="anton">El día 29</h2><svg class="qq qq-dia" viewBox="-60 -40 740 660" aria-hidden="true" focusable="false"><g transform="rotate(2 250 560)"><g class="cuerpo"><path d="M150,170 C150,60 350,60 350,170 C350,255 250,245 250,345" fill="none" stroke="#111111" stroke-width="100" stroke-linejoin="round"/><g class="ojos"><circle cx="206" cy="95" r="24" fill="#FFFFFF"/><circle cx="214" cy="95" r="10.1" fill="#111111"/><circle cx="294" cy="95" r="24" fill="#FFFFFF"/><circle cx="302" cy="95" r="10.1" fill="#111111"/></g><line x1="184" y1="22" x2="228" y2="22" stroke="#111111" stroke-width="11" stroke-linecap="round"/><line x1="272" y1="22" x2="316" y2="22" stroke="#111111" stroke-width="11" stroke-linecap="round"/><path d="M215,300 Q167.5,354.0 140,372" fill="none" stroke="#111111" stroke-width="15" stroke-linecap="round"/><circle cx="140" cy="372" r="15" fill="#111111"/><path d="M285,300 Q366.0,283.0 427,230.0" fill="none" stroke="#111111" stroke-width="15" stroke-linecap="round"/><circle cx="427" cy="230.0" r="15" fill="#111111"/></g><circle cx="250" cy="455" r="52" fill="#111111"/><path d="M232,498 L222,572 M268,498 L278,572" stroke="#111111" stroke-width="15" stroke-linecap="round"/><ellipse cx="208" cy="578" rx="30" ry="13" fill="#111111"/><ellipse cx="292" cy="578" rx="30" ry="13" fill="#111111"/></g><g class="prop" transform="translate(445 165) rotate(-4)"><rect x="6" y="8" width="210" height="130" fill="#111111"/><rect width="210" height="130" fill="#FFFFFF" stroke="#111111" stroke-width="6"/><rect x="18" y="22" width="62" height="78" fill="#FFD400" stroke="#111111" stroke-width="5"/><text x="146" y="62" font-family="Anton,Impact,sans-serif" font-size="44" text-anchor="middle" fill="#111111">DNI</text><line x1="98" y1="88" x2="190" y2="88" stroke="#111111" stroke-width="6"/></g></svg></div>
   <p class="entra">Lo que tienes que llevar y <span class="hl">lo que no vale</span>.</p>
   <ul class="lista card">
     <li><p><b>Horario.</b> De 9:00 a 20:00.</p></li>
@@ -298,10 +463,10 @@
     <li><p><b>Dos sobres.</b> Uno blanco para el Congreso y uno sepia para el Senado.</p></li>
     <li><p><b>La papeleta.</b> Las hay en el colegio. También vale la que te llega a casa.</p></li>
   </ul>
-</section>
+</div></section>
 
-<section id="blanco" class="ancho">
-  <div class="bloque"><span class="n" aria-hidden="true">6</span><h2 class="anton">Si no te convence nadie</h2></div>
+<section id="blanco" class="banda tema-papel"><div class="ancho">
+  <div class="bloque"><span class="n" aria-hidden="true">6</span><h2 class="anton">Si no te convence nadie</h2><svg class="qq qq-blanco" viewBox="-60 -40 740 660" aria-hidden="true" focusable="false"><g transform="rotate(2 250 560)"><g class="cuerpo"><path d="M150,170 C150,60 350,60 350,170 C350,255 250,245 250,345" fill="none" stroke="#111111" stroke-width="100" stroke-linejoin="round"/><g class="ojos"><circle cx="206" cy="95" r="24" fill="#FFFFFF"/><circle cx="214" cy="95" r="10.1" fill="#111111"/><circle cx="294" cy="95" r="24" fill="#FFFFFF"/><circle cx="302" cy="95" r="10.1" fill="#111111"/></g><line x1="184" y1="22" x2="228" y2="22" stroke="#111111" stroke-width="11" stroke-linecap="round"/><line x1="272" y1="22" x2="316" y2="22" stroke="#111111" stroke-width="11" stroke-linecap="round"/><path d="M215,300 Q167.5,354.0 140,372" fill="none" stroke="#111111" stroke-width="15" stroke-linecap="round"/><circle cx="140" cy="372" r="15" fill="#111111"/><path d="M285,300 Q363.5,285.5 422,235.0" fill="none" stroke="#111111" stroke-width="15" stroke-linecap="round"/><circle cx="422" cy="235.0" r="15" fill="#111111"/></g><circle cx="250" cy="455" r="52" fill="#111111"/><path d="M232,498 L222,572 M268,498 L278,572" stroke="#111111" stroke-width="15" stroke-linecap="round"/><ellipse cx="208" cy="578" rx="30" ry="13" fill="#111111"/><ellipse cx="292" cy="578" rx="30" ry="13" fill="#111111"/></g><g class="prop" transform="translate(440 120) rotate(-4)"><rect x="6" y="8" width="200" height="230" fill="#111111"/><rect width="200" height="230" fill="#FFFFFF" stroke="#111111" stroke-width="6"/><text x="100" y="62" font-family="Anton,Impact,sans-serif" font-size="38" text-anchor="middle" fill="#111111">BLANCO</text><line x1="20" y1="80" x2="180" y2="80" stroke="#111111" stroke-width="4"/><text x="100" y="132" font-family="Anton,Impact,sans-serif" font-size="38" text-anchor="middle" fill="#111111">NULO</text><line x1="20" y1="150" x2="180" y2="150" stroke="#111111" stroke-width="4"/><text x="100" y="202" font-family="Anton,Impact,sans-serif" font-size="38" text-anchor="middle" fill="#111111">NO IR</text></g></svg></div>
   <p class="entra">En blanco, nulo o no ir. <span class="hl">No es lo mismo.</span></p>
   <ul class="tres">
     <li class="card"><h3>En blanco</h3><p class="es">El sobre vacío, sin papeleta.</p><p class="si">Es un voto válido y sale en los resultados con su propia cifra.</p><p class="no">No va a ningún partido y no deja ninguna silla vacía.</p></li>
@@ -309,11 +474,11 @@
     <li class="card"><h3>No ir</h3><p class="es">No votas.</p><p class="si">Votar es un derecho, no una obligación.</p><p class="no">Solo baja la participación. Las elecciones valen igual.</p></li>
   </ul>
   <p class="apunte"><b>El único efecto del voto en blanco.</b> Un partido necesita 3 de cada 100 votos válidos de su provincia para tener diputados. El blanco es válido, así que sube un poco ese listón. Solo se nota en provincias grandes.</p>
-  <div class="cifra card"><b>200.673</b><p>personas votaron en blanco en 2023. Menos de 1 de cada 100 votos.</p></div>
-</section>
+  <div class="cifra card"><b data-cuenta="200673">200.673</b><p>personas votaron en blanco en 2023. Menos de 1 de cada 100 votos.</p></div>
+</div></section>
 
-<section id="cuenta" class="ancho">
-  <div class="bloque"><span class="n" aria-hidden="true">7</span><h2 class="anton">Cómo se cuenta</h2></div>
+<section id="cuenta" class="banda tema-negro"><div class="ancho">
+  <div class="bloque"><span class="n" aria-hidden="true">7</span><h2 class="anton">Cómo se cuenta</h2><svg class="qq qq-cuenta" viewBox="-60 -40 740 660" aria-hidden="true" focusable="false"><g transform="rotate(0 250 560)"><g class="cuerpo"><path d="M150,170 C150,60 350,60 350,170 C350,255 250,245 250,345" fill="none" stroke="#111111" stroke-width="100" stroke-linejoin="round"/><g class="ojos"><circle cx="206" cy="95" r="24" fill="#FFFFFF"/><circle cx="206" cy="105" r="10.1" fill="#111111"/><circle cx="294" cy="95" r="24" fill="#FFFFFF"/><circle cx="294" cy="105" r="10.1" fill="#111111"/></g><line x1="184" y1="22" x2="228" y2="22" stroke="#111111" stroke-width="11" stroke-linecap="round"/><line x1="272" y1="22" x2="316" y2="22" stroke="#111111" stroke-width="11" stroke-linecap="round"/><path d="M215,300 Q174.5,367.5 154,399.0" fill="none" stroke="#111111" stroke-width="15" stroke-linecap="round"/><circle cx="154" cy="399.0" r="15" fill="#111111"/><path d="M285,300 Q325.5,367.5 346,399.0" fill="none" stroke="#111111" stroke-width="15" stroke-linecap="round"/><circle cx="346" cy="399.0" r="15" fill="#111111"/></g><circle cx="250" cy="455" r="52" fill="#111111"/><path d="M232,498 L222,572 M268,498 L278,572" stroke="#111111" stroke-width="15" stroke-linecap="round"/><ellipse cx="208" cy="578" rx="30" ry="13" fill="#111111"/><ellipse cx="292" cy="578" rx="30" ry="13" fill="#111111"/></g><g class="prop-c" transform="translate(150 300) rotate(0)"><rect x="6" y="8" width="200" height="180" fill="#111111"/><rect width="200" height="180" fill="#FFFFFF" stroke="#111111" stroke-width="6"/><text x="100" y="50" font-family="DM Mono,monospace" font-size="28" text-anchor="middle" fill="#111111">ESCAÑOS</text><line x1="18" y1="72" x2="182" y2="72" stroke="#111111" stroke-width="4" stroke-dasharray="8 6"/><text x="100" y="150" font-family="Anton,Impact,sans-serif" font-size="76" text-anchor="middle" fill="#111111">350</text></g><g class="manos"><circle cx="154" cy="399.0" r="17" fill="#111111"/><circle cx="346" cy="399.0" r="17" fill="#111111"/></g></svg></div>
   <p class="entra">No se cuentan todos los votos juntos. Se cuenta <span class="hl">provincia a provincia</span>.</p>
   <ul class="lista card">
     <li><p><b>350 diputados.</b> Cada provincia elige a los suyos.</p></li>
@@ -322,14 +487,14 @@
   </ul>
   <figure class="pesa card">
     <h3>Votantes para elegir a un diputado</h3>
-    <div class="barra"><span>Teruel</span><div><i style="width: 14.5%"></i><em>35.000</em></div></div>
-    <div class="barra"><span>Madrid</span><div><i style="width: 60%"></i><em>145.000</em></div></div>
+    <div class="barra"><span>Teruel</span><div><i style="width: 14.5%"></i><em data-cuenta="35000">35.000</em></div></div>
+    <div class="barra"><span>Madrid</span><div><i style="width: 60%"></i><em data-cuenta="145000">145.000</em></div></div>
     <p>Por eso un voto en Teruel pesa como cuatro de Madrid. Está en la Constitución y en la ley electoral, y solo el Congreso puede cambiarlo.</p>
   </figure>
-</section>
+</div></section>
 
-<section id="bulos" class="ancho">
-  <div class="bloque"><span class="n" aria-hidden="true">8</span><h2 class="anton">¿Verdad o bulo?</h2></div>
+<section id="bulos" class="banda tema-amarillo"><div class="ancho">
+  <div class="bloque"><span class="n" aria-hidden="true">8</span><h2 class="anton">¿Verdad o bulo?</h2><svg class="qq qq-bulos" viewBox="-60 -40 740 660" aria-hidden="true" focusable="false"><g transform="rotate(2 250 560)"><g class="cuerpo"><path d="M150,170 C150,60 350,60 350,170 C350,255 250,245 250,345" fill="none" stroke="#111111" stroke-width="100" stroke-linejoin="round"/><g class="ojos"><circle cx="206" cy="95" r="24" fill="#FFFFFF"/><circle cx="214" cy="95" r="10.1" fill="#111111"/><circle cx="294" cy="95" r="24" fill="#FFFFFF"/><circle cx="302" cy="95" r="10.1" fill="#111111"/></g><line x1="184" y1="22" x2="228" y2="22" stroke="#111111" stroke-width="11" stroke-linecap="round"/><line x1="272" y1="22" x2="316" y2="22" stroke="#111111" stroke-width="11" stroke-linecap="round"/><path d="M215,300 Q167.5,354.0 140,372" fill="none" stroke="#111111" stroke-width="15" stroke-linecap="round"/><circle cx="140" cy="372" r="15" fill="#111111"/><path d="M285,300 Q363.5,273.0 422,210.0" fill="none" stroke="#111111" stroke-width="15" stroke-linecap="round"/><circle cx="422" cy="210.0" r="15" fill="#111111"/></g><circle cx="250" cy="455" r="52" fill="#111111"/><path d="M232,498 L222,572 M268,498 L278,572" stroke="#111111" stroke-width="15" stroke-linecap="round"/><ellipse cx="208" cy="578" rx="30" ry="13" fill="#111111"/><ellipse cx="292" cy="578" rx="30" ry="13" fill="#111111"/></g><g class="prop" transform="translate(440 160) rotate(8)"><rect x="6" y="8" width="220" height="100" fill="#111111"/><rect width="220" height="100" fill="#FFD400" stroke="#111111" stroke-width="6"/><text x="110" y="72" font-family="Anton,Impact,sans-serif" font-size="66" text-anchor="middle" fill="#111111">FALSO</text></g></svg></div>
   <p class="entra">Cuatro cosas que <span class="hl">se repiten mucho</span> y no son verdad.</p>
   <ul class="bulos">
     <li class="card"><span class="sello">Falso</span><q>El voto en blanco se lo queda el partido que gana.</q><p>No va a ningún partido. Tampoco al más votado.</p></li>
@@ -337,7 +502,68 @@
     <li class="card"><span class="sello">Falso</span><q>Si pido el voto por correo, puedo cambiar de idea e ir el 29.</q><p>Una vez pedido, ya no puedes votar en persona.</p></li>
     <li class="card"><span class="sello">Falso</span><q>El voto en blanco deja escaños vacíos.</q><p>Los 350 diputados se reparten igual, entre los partidos.</p></li>
   </ul>
-</section>
+</div></section>
+
+<section id="programas" class="banda tema-papel"><div class="ancho">
+  <div class="bloque"><span class="n" aria-hidden="true">9</span><h2 class="anton">Los programas</h2><svg class="qq qq-programas" viewBox="-60 -40 740 660" aria-hidden="true" focusable="false"><g transform="rotate(2 250 560)"><g class="cuerpo"><path d="M150,170 C150,60 350,60 350,170 C350,255 250,245 250,345" fill="none" stroke="#111111" stroke-width="100" stroke-linejoin="round"/><g class="ojos"><circle cx="206" cy="95" r="24" fill="#FFFFFF"/><circle cx="214" cy="95" r="10.1" fill="#111111"/><circle cx="294" cy="95" r="24" fill="#FFFFFF"/><circle cx="302" cy="95" r="10.1" fill="#111111"/></g><line x1="184" y1="22" x2="228" y2="22" stroke="#111111" stroke-width="11" stroke-linecap="round"/><line x1="272" y1="22" x2="316" y2="22" stroke="#111111" stroke-width="11" stroke-linecap="round"/><path d="M215,300 Q167.5,354.0 140,372" fill="none" stroke="#111111" stroke-width="15" stroke-linecap="round"/><circle cx="140" cy="372" r="15" fill="#111111"/><path d="M285,300 Q363.5,283.0 422,230.0" fill="none" stroke="#111111" stroke-width="15" stroke-linecap="round"/><circle cx="422" cy="230.0" r="15" fill="#111111"/></g><circle cx="250" cy="455" r="52" fill="#111111"/><path d="M232,498 L222,572 M268,498 L278,572" stroke="#111111" stroke-width="15" stroke-linecap="round"/><ellipse cx="208" cy="578" rx="30" ry="13" fill="#111111"/><ellipse cx="292" cy="578" rx="30" ry="13" fill="#111111"/></g><g class="prop" transform="translate(440 120) rotate(-4)"><rect x="6" y="8" width="170" height="220" fill="#111111"/><rect width="170" height="220" fill="#FFFFFF" stroke="#111111" stroke-width="6"/><text x="85" y="50" font-family="DM Mono,monospace" font-size="26" text-anchor="middle" fill="#111111">PROGRAMA</text><line x1="22" y1="90" x2="148" y2="90" stroke="#111111" stroke-width="6"/><line x1="22" y1="122" x2="148" y2="122" stroke="#111111" stroke-width="6"/><line x1="22" y1="154" x2="148" y2="154" stroke="#111111" stroke-width="6"/><line x1="22" y1="186" x2="148" y2="186" stroke="#111111" stroke-width="6"/></g></svg></div>
+  <p class="entra">Lo que propone cada partido, contado por él mismo. Aquí tienes <span class="hl">su programa</span>, en su web.</p>
+  <!-- PROGRAMAS:INICIO (generated by programas.py, do not edit by hand) -->
+<p class="mono-fecha">Revisado el 10 de noviembre de 2026.</p>
+<h3 class="grupo">Con diputados en 2023</h3>
+<ul class="programas">
+<li class="card"><a class="prog" href="https://www.pp.es/wp-content/uploads/2026/11/LA-RECONSTRUCCION-NACIONAL.pdf" target="_blank" rel="noopener" data-ev="programa" data-dato="pp"><span class="logo"><img src="/assets/partidos/pp.svg" alt="" loading="lazy"></span><h3>PP</h3><p class="donde">En Navarra, junto a UPN</p><span class="leer">Leer programa 2026</span><small>10 nov.</small></a></li>
+<li class="card antiguo"><a class="prog" href="https://www.psoe.es/media-content/2023/07/PROGRAMA_ELECTORAL-GENERALES-2023.pdf" target="_blank" rel="noopener" data-ev="programa" data-dato="psoe-previo"><span class="logo"><img src="/assets/partidos/psoe.svg" alt="" loading="lazy"></span><h3>PSOE</h3><span class="aviso">El de 2026 aún no ha salido</span><span class="leer viejo">Ver el de 2023</span></a></li>
+<li class="card antiguo"><a class="prog" href="https://web.archive.org/web/20250313193448id_/https://www.voxespana.es/wp-content/uploads/2023/07/Programa-VOX-2023-con-menos-peso.pdf" target="_blank" rel="noopener" data-ev="programa" data-dato="vox-previo"><span class="logo"><img src="/assets/partidos/vox.svg" alt="" loading="lazy"></span><h3>Vox</h3><span class="aviso">El de 2026 aún no ha salido</span><span class="leer viejo">Ver el de 2023</span></a></li>
+<li class="card antiguo"><a class="prog" href="https://frenteamplio.info/" target="_blank" rel="noopener" data-ev="programa" data-dato="frenteamplio-previo"><span class="logo"><img src="/assets/partidos/frenteamplio.svg" alt="" loading="lazy"></span><h3>Frente Amplio</h3><p class="donde">En 2023 era Sumar</p><span class="aviso">Su web de campaña del 29‑N</span><span class="leer viejo">Ver sus propuestas</span></a></li>
+<li class="card"><a class="prog" href="https://www.esquerrarepublicana.cat/documents/e2026-programa.pdf" target="_blank" rel="noopener" data-ev="programa" data-dato="erc"><span class="logo"><img src="/assets/partidos/erc.svg" alt="" loading="lazy"></span><h3>ERC</h3><p class="donde">En catalán</p><span class="leer">Leer programa 2026</span><small>5 nov.</small></a></li>
+<li class="card antiguo"><a class="prog" href="https://web.archive.org/web/20230805224113id_/https://janhihaprou.cat/app/uploads/2023/07/Programa-Electoral-Junts-per-Catalunya-23J.pdf" target="_blank" rel="noopener" data-ev="programa" data-dato="junts-previo"><span class="logo"><img src="/assets/partidos/junts.svg" alt="" loading="lazy"></span><h3>Junts</h3><p class="donde">En catalán</p><span class="aviso">El de 2026 aún no ha salido</span><span class="leer viejo">Ver el de 2023</span></a></li>
+<li class="card antiguo"><a class="prog" href="https://ehbildu.eus/dokumentuak/23J-COMPROMISO-DE-EUSKAL-HERRIA-BILDU.pdf" target="_blank" rel="noopener" data-ev="programa" data-dato="bildu-previo"><span class="logo"><img src="/assets/partidos/bildu.svg" alt="" loading="lazy"></span><h3>EH Bildu</h3><span class="aviso">El de 2026 aún no ha salido</span><span class="leer viejo">Ver el de 2023</span></a></li>
+<li class="card"><a class="prog" href="https://www.eaj-pnv.eus/es/adjuntos-documentos/21765/pdf/programa-electoral-29n" target="_blank" rel="noopener" data-ev="programa" data-dato="pnv"><span class="logo"><img src="/assets/partidos/pnv.svg" alt="" loading="lazy"></span><h3>PNV</h3><span class="leer">Leer programa 2026</span><small>9 nov.</small></a></li>
+<li class="card"><a class="prog" href="https://www.bng.gal/media/bnggaliza/files/2026/11/03/26_bng_xerais_documentos_programa_electoral.pdf" target="_blank" rel="noopener" data-ev="programa" data-dato="bng"><span class="logo"><img src="/assets/partidos/bng.svg" alt="" loading="lazy"></span><h3>BNG</h3><p class="donde">En gallego</p><span class="leer">Leer programa 2026</span><small>3 nov.</small></a></li>
+<li class="card"><a class="prog" href="https://coalicioncanaria.org/wp-content/uploads/2026/11/CCA-26-Programa_Electoral-29NOV.pdf" target="_blank" rel="noopener" data-ev="programa" data-dato="cc"><span class="logo"><img src="/assets/partidos/cc2026.svg" alt="" loading="lazy"></span><h3>Coalición Canaria</h3><p class="donde">Archivo pesado (69 MB)</p><span class="leer">Leer programa 2026</span><small>8 nov.</small></a></li>
+</ul>
+<h3 class="grupo">Sin diputados en 2023</h3>
+<ul class="programas">
+<li class="card antiguo"><a class="prog" href="https://pacma.es/wp-content/uploads/2023/07/PACMA_PE_GENERALES_23J23.pdf" target="_blank" rel="noopener" data-ev="programa" data-dato="pacma-previo"><span class="logo"><img src="/assets/partidos/pacma.png" alt="" loading="lazy"></span><h3>PACMA</h3><p class="donde">En 30 provincias</p><span class="aviso">El de 2026 aún no ha salido</span><span class="leer viejo">Ver el de 2023</span></a></li>
+<li class="card antiguo"><a class="prog" href="https://frenteobrero.es/wp-content/uploads/2026/10/Programa.pdf" target="_blank" rel="noopener" data-ev="programa" data-dato="frenteobrero-previo"><span class="logo"><img src="/assets/partidos/frenteobrero.png" alt="" loading="lazy"></span><h3>Frente Obrero</h3><p class="donde">En toda España</p><span class="aviso">Su programa de partido, de octubre de 2026</span><span class="leer viejo">Ver su programa</span></a></li>
+<li class="card"><a class="prog" href="https://www.porunmundomasjusto.es/wp-content/uploads/2026/11/Castellano.pdf" target="_blank" rel="noopener" data-ev="programa" data-dato="mundojusto"><span class="logo"><img src="/assets/partidos/mundojusto.svg" alt="" loading="lazy"></span><h3>Por Un Mundo Más Justo</h3><p class="donde">En 28 provincias</p><span class="leer">Leer programa 2026</span><small>7 nov.</small></a></li>
+<li class="card antiguo"><a class="prog" href="https://teruelexiste.info/wp-content/uploads/2023/07/Programa_23J-2023-_Teruel_Existe_-elecciones-generales.pdf" target="_blank" rel="noopener" data-ev="programa" data-dato="existe-previo"><span class="logo"><img src="/assets/partidos/existe.svg" alt="" loading="lazy"></span><h3>Existe</h3><p class="donde">Solo en Teruel</p><span class="aviso">El de 2026 aún no ha salido</span><span class="leer viejo">Ver el de 2023</span></a></li>
+<li class="card antiguo"><a class="prog" href="https://www.pcte.es/wp-content/uploads/2023/07/PROGRAMA%20DE%20LUCHA%202023-2027.pdf" target="_blank" rel="noopener" data-ev="programa" data-dato="pcte-previo"><span class="logo"><img src="/assets/partidos/pcte.png" alt="" loading="lazy"></span><h3>PCTE</h3><p class="donde">En 46 provincias</p><span class="aviso">El de 2026 aún no ha salido</span><span class="leer viejo">Ver el de 2023</span></a></li>
+<li class="card antiguo"><a class="prog" href="https://geroabai.eus/es/nuestras-ideas" target="_blank" rel="noopener" data-ev="programa" data-dato="geroabai-previo"><span class="logo"><img src="/assets/partidos/geroabai.svg" alt="" loading="lazy"></span><h3>Geroa Bai</h3><p class="donde">Navarra</p><span class="aviso">Su ideario</span><span class="leer viejo">Ver sus ideas</span></a></li>
+<li class="card antiguo"><a class="prog" href="https://soriaya.org/programa-electoral-de-soria-ya-2023/" target="_blank" rel="noopener" data-ev="programa" data-dato="soriaya-previo"><span class="logo"><img src="/assets/partidos/soriaya.svg" alt="" loading="lazy"></span><h3>Soria ¡Ya!</h3><p class="donde">Solo en Soria</p><span class="aviso">El de 2026 aún no ha salido</span><span class="leer viejo">Ver el de 2023</span></a></li>
+<li class="card antiguo"><a class="prog" href="https://adelanteandalucia.org/wp-content/uploads/2023/07/programa-23J-3ed-comprimido.pdf" target="_blank" rel="noopener" data-ev="programa" data-dato="adelante-previo"><span class="logo"><img src="/assets/partidos/adelante.svg" alt="" loading="lazy"></span><h3>Adelante Andalucía</h3><p class="donde">Andalucía</p><span class="aviso">El de 2026 aún no ha salido</span><span class="leer viejo">Ver el de 2023</span></a></li>
+<li class="card antiguo"><a class="prog" href="https://x.com/escanosenblanco" target="_blank" rel="noopener" data-ev="programa" data-dato="escanosblanco-previo"><span class="logo"><img src="/assets/partidos/escanosblanco.png" alt="" loading="lazy"></span><h3>Escaños en Blanco</h3><p class="donde">En 12 provincias</p><span class="aviso">Su perfil oficial</span><span class="leer viejo">Ver su perfil</span></a></li>
+<li class="card antiguo"><a class="prog" href="https://falange.es/nuestras-ideas/" target="_blank" rel="noopener" data-ev="programa" data-dato="falange-previo"><span class="logo"><img src="/assets/partidos/falange.png" alt="" loading="lazy"></span><h3>Falange</h3><p class="donde">En 11 provincias</p><span class="aviso">Su ideario</span><span class="leer viejo">Ver sus ideas</span></a></li>
+<li class="card antiguo"><a class="prog" href="https://www.partidoautonomos.es/wp-content/uploads/2023/07/PARTIDO-AUTONOMOS-PROGRAMA-ELECCIONES-GENERALES-23J.pdf" target="_blank" rel="noopener" data-ev="programa" data-dato="autonomos-previo"><span class="logo"><img src="/assets/partidos/autonomos.svg" alt="" loading="lazy"></span><h3>Partido Autónomos</h3><p class="donde">Alicante, Castellón y Tenerife</p><span class="aviso">El de 2026 aún no ha salido</span><span class="leer viejo">Ver el de 2023</span></a></li>
+<li class="card pendiente"><div class="prog"><span class="logo"><span class="sin-logo">PREPAL</span></span><h3>PREPAL</h3><p class="donde">León, Salamanca y Zamora</p><span class="aun">Aún no publicado</span></div></li>
+<li class="card antiguo"><a class="prog" href="https://fia-independientes.es/" target="_blank" rel="noopener" data-ev="programa" data-dato="fia-previo"><span class="logo"><span class="sin-logo">Independientes de Aragón</span></span><h3>Independientes de Aragón</h3><p class="donde">Huesca y Zaragoza</p><span class="aviso">Su ideario</span><span class="leer viejo">Ver sus ideas</span></a></li>
+</ul>
+<h3 class="grupo">No se presentaron solos en 2023</h3>
+<ul class="programas">
+<li class="card antiguo"><a class="prog" href="https://web.archive.org/web/20261029000000/https://www.seacabolafiesta.com/images/diptico.pdf" target="_blank" rel="noopener" data-ev="programa" data-dato="salf-previo"><span class="logo"><img src="/assets/partidos/salf.png" alt="" loading="lazy"></span><h3>Se Acabó La Fiesta</h3><p class="donde">En 46 provincias</p><span class="aviso">Sus 10 compromisos para el 29‑N</span><span class="leer viejo">Ver sus compromisos</span></a></li>
+<li class="card antiguo"><a class="prog" href="https://pazcasaytrabajo.es/" target="_blank" rel="noopener" data-ev="programa" data-dato="podemos-previo"><span class="logo"><img src="/assets/partidos/podemos.svg" alt="" loading="lazy"></span><h3>Podemos</h3><p class="donde">En 41 provincias</p><span class="aviso">Sus 5 medidas para el 29‑N</span><span class="leer viejo">Ver sus 5 medidas</span></a></li>
+<li class="card antiguo"><a class="prog" href="https://alhora.cat/alhora-es-presentara-a-les-eleccions-espanyoles-del-29n-amb-el-lema-fora-espanya/" target="_blank" rel="noopener" data-ev="programa" data-dato="alhora-previo"><span class="logo"><img src="/assets/partidos/alhora.svg" alt="" loading="lazy"></span><h3>Alhora</h3><p class="donde">Cataluña · en catalán</p><span class="aviso">Su propuesta para el 29‑N</span><span class="leer viejo">Ver su propuesta</span></a></li>
+<li class="card antiguo"><a class="prog" href="https://compromis.net/36711/" target="_blank" rel="noopener" data-ev="programa" data-dato="compromis-previo"><span class="logo"><img src="/assets/partidos/compromis.svg" alt="" loading="lazy"></span><h3>Compromís-Front Valencià</h3><p class="donde">Comunitat Valenciana · en valenciano</p><span class="aviso">Sus prioridades para el 29‑N</span><span class="leer viejo">Ver sus prioridades</span></a></li>
+<li class="card antiguo"><a class="prog" href="https://democracia21.es/" target="_blank" rel="noopener" data-ev="programa" data-dato="d21-previo"><span class="logo"><img src="/assets/partidos/d21.svg" alt="" loading="lazy"></span><h3>Democracia21</h3><p class="donde">Barcelona y Madrid</p><span class="aviso">Sus propuestas</span><span class="leer viejo">Ver sus propuestas</span></a></li>
+<li class="card antiguo"><a class="prog" href="https://www.dragocanarias.com/programa/" target="_blank" rel="noopener" data-ev="programa" data-dato="drago-previo"><span class="logo"><img src="/assets/partidos/drago.png" alt="" loading="lazy"></span><h3>Drago Canarias</h3><p class="donde">Canarias</p><span class="aviso">Sus propuestas</span><span class="leer viejo">Ver sus propuestas</span></a></li>
+<li class="card"><a class="prog" href="https://www.feministasalcongreso.es/wp-content/uploads/2026/10/Programa_1IMP.pdf" target="_blank" rel="noopener" data-ev="programa" data-dato="feministas"><span class="logo"><img src="/assets/partidos/feministas.png" alt="" loading="lazy"></span><h3>Feministas al Congreso</h3><p class="donde">Álava y Bizkaia</p><span class="leer">Leer programa 2026</span><small>20 oct.</small></a></li>
+<li class="card antiguo"><a class="prog" href="https://iustitiaeuropa.es/img/bloques/documentos/descarga-aqui-tu-contrato-00030.pdf" target="_blank" rel="noopener" data-ev="programa" data-dato="iustitia-previo"><span class="logo"><img src="/assets/partidos/iustitia.png" alt="" loading="lazy"></span><h3>Iustitia Europa</h3><p class="donde">Madrid</p><span class="aviso">Su «contrato electoral», de diciembre de 2025</span><span class="leer viejo">Ver su contrato</span></a></li>
+<li class="card antiguo"><a class="prog" href="https://liberacioncanaria.org/nuestras-propuestas/" target="_blank" rel="noopener" data-ev="programa" data-dato="liberacion-previo"><span class="logo"><span class="sin-logo">Liberación Canaria</span></span><h3>Liberación Canaria</h3><p class="donde">Canarias</p><span class="aviso">Sus propuestas</span><span class="leer viejo">Ver sus propuestas</span></a></li>
+<li class="card antiguo"><a class="prog" href="https://www.nuevoext.es/#/29n" target="_blank" rel="noopener" data-ev="programa" data-dato="nuevoextremenismo-previo"><span class="logo"><img src="/assets/partidos/nuevoextremenismo.png" alt="" loading="lazy"></span><h3>Nuevo Extremeñismo</h3><p class="donde">Badajoz y Cáceres</p><span class="aviso">Sus medidas para el 29‑N</span><span class="leer viejo">Ver sus medidas</span></a></li>
+<li class="card antiguo"><a class="prog" href="https://www.nuevacanariasbc.org/blog/2026/10/16/yone-caraballo-celebra-el-nacimiento-de-unidad-del-pueblo-canario-upc/" target="_blank" rel="noopener" data-ev="programa" data-dato="upc-previo"><span class="logo"><img src="/assets/partidos/upc.svg" alt="" loading="lazy"></span><h3>Unidad del Pueblo Canario</h3><p class="donde">Canarias · con NC, Podemos, IU y Sumar</p><span class="aviso">Su presentación como coalición</span><span class="leer viejo">Ver la nota</span></a></li>
+</ul>
+<!-- PROGRAMAS:FIN -->
+  <div class="card transparencia">
+    <span class="etiqueta">Cómo está hecha esta lista</span>
+    <ul>
+      <li><b>El orden.</b> Por tamaño, para no favorecer a nadie, con los últimos resultados: los votos de las generales de 2023. Quien no se presentó solo en 2023 va por sus votos en las europeas de 2024 y, si tampoco, por orden alfabético.</li>
+      <li><b>Cada día.</b> Reviso todos los días si algún partido ha publicado su programa y lo cambio aquí. Si aún no hay programa de 2026, enlazo lo que cada partido tenga publicado (el de 2023, sus medidas o su ideario) y lo marco aparte.</li>
+      <li><b>De la fuente.</b> Cada enlace lleva al documento que publicó el propio partido. Si su web ya no lo tiene o no deja abrirlo, a la copia guardada en archive.org.</li>
+    </ul>
+    <p class="escribe">¿Falta un partido, hay un programa nuevo o algo está mal? Escríbeme y lo reviso.</p>
+    <a class="boton" href="mailto:hola@quecambia.es?subject=Programas%20de%20la%20gu%C3%ADa%2029-N" data-ev="sugerencia">Escribir a hola@quecambia.es</a>
+  </div>
+</div></section>
 
 <section class="cierre ancho otra-guia">
   <div class="card">
@@ -379,7 +605,7 @@
 <section class="cierre ancho">
   <div class="card">
     <h2 class="anton">¿Y qué propone cada partido?</h2>
-    <p>Eso no está aquí. Lo contamos uno por uno, con el mismo molde para todos, en <b>@que.cambia</b>.</p>
+    <p>Sus programas están en el <a href="#programas">apartado 9</a>. Y lo contamos uno por uno, con el mismo molde para todos, en <b>@que.cambia</b>.</p>
     <div class="botones">
       <a class="boton" href="https://www.instagram.com/que.cambia/" target="_blank" rel="noopener" data-ev="ig">Ver los vídeos</a>
       <button class="boton claro" type="button" id="guardar">Guardar en PDF</button>
@@ -423,6 +649,24 @@
   document.querySelector('[data-ev="ig"]').addEventListener('click', () => evento('ig'));
   document.querySelector('[data-ev="curso"]').addEventListener('click', () => evento('curso'));
   document.querySelector('[data-ev="kit"]').addEventListener('click', () => evento('kit'));
+  // Dates marked against today in Spain: past ones fade with "Ya pasó", the running one says "Ahora"
+  // and the next one "Lo siguiente". Without JS every date simply shows as written.
+  (() => {
+    const hoy = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Madrid' }).format(new Date());
+    const marca = (li, txt) => { const q = li.querySelector('.que'); if (!q) return; const e = document.createElement('span'); e.className = 'estado'; e.textContent = txt; q.prepend(e); };
+    let siguiente = false;
+    for (const li of document.querySelectorAll('.fechas li[data-hasta]')) {
+      const desde = li.dataset.desde || li.dataset.hasta;
+      if (li.dataset.hasta < hoy) { li.classList.add('pasada'); marca(li, 'Ya pasó'); }
+      else if (desde <= hoy) { li.classList.add('ahora'); marca(li, 'Ahora'); }
+      else if (!siguiente) { siguiente = true; li.classList.add('proxima'); marca(li, 'Lo siguiente'); }
+    }
+    for (const p of document.querySelectorAll('.plazo[data-hasta]')) if (p.dataset.hasta < hoy) { p.classList.add('pasado'); p.textContent = `Cerrado · ${p.textContent}`; }
+  })();
+  document.querySelector('[data-ev="sugerencia"]').addEventListener('click', () => evento('sugerencia'));
+  document.querySelectorAll('[data-ev="indice"]').forEach((a) => a.addEventListener('click', () => evento('indice', a.dataset.dato)));
+  // Which party's programme gets opened: guia_programa, with the party id in `what`.
+  document.querySelectorAll('[data-ev="programa"]').forEach((a) => a.addEventListener('click', () => evento('programa', a.dataset.dato)));
   for (const a of document.querySelectorAll('[data-importe]')) a.addEventListener('click', () => evento('cafe', a.dataset.importe));
   // The browser has already checked the field against its minimum when this runs.
   const otra = document.querySelector('.otra');
@@ -435,6 +679,57 @@
     enlace.searchParams.set('__prefilled_amount', String(Math.round(Number(otra.elements.cantidad.value) * 100)));
     location.href = enlace.href;
   });
+
+  // Premium pass: arrivals, counters and the countdown. Hidden states exist only under html.anim, set here.
+  (() => {
+    const quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const hoy = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Madrid' }).format(new Date());
+    const dias = Math.round((Date.parse('2026-11-29') - Date.parse(hoy)) / 864e5);
+    const f = document.querySelector('.faltan');
+    if (f && dias > 0) { f.querySelector('[data-faltan]').textContent = dias; if (dias === 1) f.lastElementChild.textContent = 'día para votar'; f.hidden = false; }
+    if (quieto || !('IntersectionObserver' in window)) return;
+    const tipos = [
+      ['.banda .bloque', 'a-titulo'], ['.banda .entra', 'a-entra'], ['.fechas > li', 'a-izq'], ['.pasos > li', 'a-pasos'],
+      ['.tres > li', 'a-escala'], ['.lista > li', 'a-check'], ['.ojo', 'a-ojo'], ['.bulos > li', 'a-bulo'],
+      ['.programas > li', 'a-prog'], ['.cifra, .pesa, .apunte, .transparencia, .banda .grupo, .mono-fecha', 'a-suave'],
+    ];
+    const objetivos = [];
+    for (const [sel, cls] of tipos) {
+      for (const el of document.querySelectorAll(sel)) {
+        if (el.className.includes('a-')) continue;
+        el.classList.add(cls);
+        el.style.setProperty('--i', [...el.parentElement.children].indexOf(el) % 8);
+        objetivos.push(el);
+      }
+    }
+    // Printing or saving as PDF shows everything at once, whatever was still waiting.
+    addEventListener('beforeprint', () => objetivos.forEach((el) => el.classList.add('visto')));
+    document.documentElement.classList.add('anim');
+    const fmt = new Intl.NumberFormat('es-ES');
+    const cuenta = (el) => {
+      const fin = +el.dataset.cuenta, t0 = performance.now(), dur = 1100;
+      const paso = (t) => { const k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3); el.textContent = fmt.format(Math.round(fin * e)); if (k < 1) requestAnimationFrame(paso); };
+      requestAnimationFrame(paso);
+    };
+    const io = new IntersectionObserver((es) => {
+      for (const e of es) if (e.isIntersecting) {
+        e.target.classList.add('visto');
+        e.target.querySelectorAll('[data-cuenta]').forEach(cuenta);
+        io.unobserve(e.target);
+      }
+    }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
+    objetivos.forEach((el) => io.observe(el));
+    // Safety net, independent of the observer: whatever is already on screen is shown, on every scroll.
+    // A phone browser that misreports an intersection must never leave a section blank.
+    const muestra = (el) => { if (el.classList.contains('visto')) return; el.classList.add('visto'); el.querySelectorAll('[data-cuenta]').forEach(cuenta); io.unobserve(el); };
+    let pendiente = false;
+    const repasa = () => { pendiente = false; const h = innerHeight; for (const el of objetivos) if (!el.classList.contains('visto')) { const r = el.getBoundingClientRect(); if (r.top < h * 0.96 && r.bottom > 0) muestra(el); } };
+    addEventListener('scroll', () => { if (!pendiente) { pendiente = true; requestAnimationFrame(repasa); } }, { passive: true });
+    addEventListener('resize', repasa);
+    setTimeout(repasa, 600);
+    // Failsafe: whatever the observer never reached is shown anyway.
+    setTimeout(() => objetivos.forEach((el) => { if (!el.classList.contains('visto') && el.getBoundingClientRect().top < innerHeight) el.classList.add('visto'); }), 2500);
+  })();
 </script>
 </body>
 </html>
